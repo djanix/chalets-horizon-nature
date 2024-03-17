@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chalets",
+  "info": {
+    "singularName": "chalet",
+    "pluralName": "chalets",
+    "displayName": "Chalets"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "reservationDate": {
+      "type": "date"
+    },
+    "chaletName": {
+      "type": "string"
+    }
+  }
+}
