@@ -9,5 +9,5 @@ module.exports = ({ env }) => [
   'strapi::session',
   'strapi::favicon',
   'strapi::public',
-  { resolve: './src/middlewares/admin-redirect' },
+  // { resolve: './src/middlewares/admin-redirect' },
 ];
