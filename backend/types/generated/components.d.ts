@@ -187,6 +187,7 @@ export interface LinksButtonLink extends Schema.Component {
     newTab: Attribute.Boolean & Attribute.DefaultTo<false>;
     text: Attribute.String;
     type: Attribute.Enumeration<['primary', 'secondary']>;
+    color: Attribute.String;
   };
 }
 
@@ -227,9 +228,8 @@ export interface LinksSocialLink extends Schema.Component {
   };
   attributes: {
     url: Attribute.String & Attribute.Required;
-    newTab: Attribute.Boolean & Attribute.DefaultTo<false>;
-    text: Attribute.String & Attribute.Required;
-    social: Attribute.Enumeration<['YOUTUBE', 'TWITTER', 'DISCORD', 'WEBSITE']>;
+    social: Attribute.Enumeration<['Facebook', 'Instagram']>;
+    color: Attribute.String;
   };
 }
 
