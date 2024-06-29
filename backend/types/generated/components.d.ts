@@ -187,7 +187,8 @@ export interface LinksButtonLink extends Schema.Component {
     newTab: Attribute.Boolean & Attribute.DefaultTo<false>;
     text: Attribute.String;
     type: Attribute.Enumeration<['primary', 'secondary']>;
-    color: Attribute.String;
+    color: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
   };
 }
 
@@ -229,7 +230,8 @@ export interface LinksSocialLink extends Schema.Component {
   attributes: {
     url: Attribute.String & Attribute.Required;
     social: Attribute.Enumeration<['Facebook', 'Instagram']>;
-    color: Attribute.String;
+    color: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
   };
 }
 
