@@ -1,7 +1,17 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  basePath: '/draft',
+  // basePath: '/draft',
+  async redirects() {
+    return [
+      // Basic redirect
+      {
+        source: '/:lang',
+        destination: '/:lang/splash',
+        permanent: false,
+      },
+    ]
+  },
   images: {
     remotePatterns: [
       {
