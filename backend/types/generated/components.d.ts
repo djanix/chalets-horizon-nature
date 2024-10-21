@@ -1,5 +1,18 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface ElementsActivity extends Schema.Component {
+  collectionName: 'components_elements_activities';
+  info: {
+    displayName: 'activity';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    picture: Attribute.Media<'images'> & Attribute.Required;
+    content: Attribute.RichText;
+  };
+}
+
 export interface ElementsFeatureColumn extends Schema.Component {
   collectionName: 'components_slices_feature_columns';
   info: {
@@ -250,6 +263,16 @@ export interface MetaMetadata extends Schema.Component {
   };
 }
 
+export interface SectionsActivityList extends Schema.Component {
+  collectionName: 'components_sections_activity_lists';
+  info: {
+    displayName: 'Activity list';
+  };
+  attributes: {
+    activities: Attribute.Component<'elements.activity', true>;
+  };
+}
+
 export interface SectionsBottomActions extends Schema.Component {
   collectionName: 'components_slices_bottom_actions';
   info: {
@@ -369,7 +392,7 @@ export interface SectionsPhotoGallery extends Schema.Component {
     description: '';
   };
   attributes: {
-    mediaList: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    mediaList: Attribute.Media<'images', true>;
   };
 }
 
@@ -492,6 +515,7 @@ export interface SharedVideoEmbed extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'elements.activity': ElementsActivity;
       'elements.feature-column': ElementsFeatureColumn;
       'elements.feature-row': ElementsFeatureRow;
       'elements.feature': ElementsFeature;
@@ -508,6 +532,7 @@ declare module '@strapi/types' {
       'links.link': LinksLink;
       'links.social-link': LinksSocialLink;
       'meta.metadata': MetaMetadata;
+      'sections.activity-list': SectionsActivityList;
       'sections.bottom-actions': SectionsBottomActions;
       'sections.feature-columns-group': SectionsFeatureColumnsGroup;
       'sections.feature-rows-group': SectionsFeatureRowsGroup;

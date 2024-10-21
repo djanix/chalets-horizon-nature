@@ -39,7 +39,8 @@
         "sections.lead-form",
         "sections.features",
         "sections.heading",
-        "sections.photo-gallery"
+        "sections.photo-gallery",
+        "sections.activity-list"
       ],
       "pluginOptions": {
         "i18n": {
