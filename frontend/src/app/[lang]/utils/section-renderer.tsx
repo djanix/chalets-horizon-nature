@@ -1,11 +1,16 @@
+import Heading from "../components/Heading";
 import Hero from "../components/Hero";
 import Features from "../components/Features";
 import Testimonials from "../components/Testimonials";
 import Pricing from "../components/Pricing";
 import Email from "../components/Email";
+import FeatureColumnsGroup from "../components/FeatureColumnsGroup";
+import PhotoGallery from "../components/PhotoGallery";
 
 export function sectionRenderer(section: any, index: number) {
   switch (section.__component) {
+    case "sections.heading":
+      return <Heading key={index} data={section} />;
     case "sections.hero":
       return <Hero key={index} data={section} />;
     case "sections.features":
@@ -16,6 +21,10 @@ export function sectionRenderer(section: any, index: number) {
       return <Pricing key={index} data={section} />;
     case "sections.lead-form":
       return <Email key={index} data={section} />;
+    case "sections.feature-columns-group":
+      return <FeatureColumnsGroup key={index} data={section} />;
+    case "sections.photo-gallery":
+      return <PhotoGallery key={index} data={section} />;
     default:
       return null;
   }

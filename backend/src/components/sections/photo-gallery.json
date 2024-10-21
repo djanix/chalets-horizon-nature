@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_photo_galleries",
+  "info": {
+    "displayName": "Photo  gallery",
+    "icon": "picture",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "mediaList": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

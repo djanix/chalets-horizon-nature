@@ -361,6 +361,18 @@ export interface SectionsLeadForm extends Schema.Component {
   };
 }
 
+export interface SectionsPhotoGallery extends Schema.Component {
+  collectionName: 'components_sections_photo_galleries';
+  info: {
+    displayName: 'Photo  gallery';
+    icon: 'picture';
+    description: '';
+  };
+  attributes: {
+    mediaList: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+  };
+}
+
 export interface SectionsPricing extends Schema.Component {
   collectionName: 'components_sections_pricings';
   info: {
@@ -504,6 +516,7 @@ declare module '@strapi/types' {
       'sections.hero': SectionsHero;
       'sections.large-video': SectionsLargeVideo;
       'sections.lead-form': SectionsLeadForm;
+      'sections.photo-gallery': SectionsPhotoGallery;
       'sections.pricing': SectionsPricing;
       'sections.rich-text': SectionsRichText;
       'sections.testimonials-group': SectionsTestimonialsGroup;
