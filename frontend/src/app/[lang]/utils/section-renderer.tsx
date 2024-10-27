@@ -7,6 +7,7 @@ import Email from "../components/Email";
 import FeatureColumnsGroup from "../components/FeatureColumnsGroup";
 import PhotoGallery from "../components/PhotoGallery";
 import ActivityList from "../components/ActivityList";
+import FeatureRowsGroup from "../components/FeatureRowsGroup";
 
 export function sectionRenderer(section: any, index: number) {
   switch (section.__component) {
@@ -24,6 +25,8 @@ export function sectionRenderer(section: any, index: number) {
       return <Email key={index} data={section} />;
     case "sections.feature-columns-group":
       return <FeatureColumnsGroup key={index} data={section} />;
+    case "sections.feature-rows-group":
+      return <FeatureRowsGroup key={index} data={section} />;
     case "sections.photo-gallery":
       return <PhotoGallery key={index} data={section} />;
     case "sections.activity-list":
