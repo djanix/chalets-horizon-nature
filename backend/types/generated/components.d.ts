@@ -152,11 +152,7 @@ export interface LayoutFooter extends Schema.Component {
     menuLinks: Attribute.Component<'links.link', true>;
     legalLinks: Attribute.Component<'links.link', true>;
     socialLinks: Attribute.Component<'links.social-link', true>;
-    categories: Attribute.Relation<
-      'layout.footer',
-      'oneToMany',
-      'api::category.category'
-    >;
+    contact: Attribute.Component<'shared.contact'>;
   };
 }
 
@@ -472,6 +468,18 @@ export interface SectionsTestimonialsGroup extends Schema.Component {
   };
 }
 
+export interface SharedContact extends Schema.Component {
+  collectionName: 'components_shared_contacts';
+  info: {
+    displayName: 'Contact';
+  };
+  attributes: {
+    address: Attribute.String;
+    email: Attribute.Email;
+    phone: Attribute.String;
+  };
+}
+
 export interface SharedMap extends Schema.Component {
   collectionName: 'components_shared_maps';
   info: {
@@ -595,6 +603,7 @@ declare module '@strapi/types' {
       'sections.reservation': SectionsReservation;
       'sections.rich-text': SectionsRichText;
       'sections.testimonials-group': SectionsTestimonialsGroup;
+      'shared.contact': SharedContact;
       'shared.map': SharedMap;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;

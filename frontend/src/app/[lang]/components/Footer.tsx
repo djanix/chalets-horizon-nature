@@ -14,14 +14,6 @@ interface FooterLink {
   social?: string;
 }
 
-interface CategoryLink {
-  id: string;
-  attributes: {
-    name: string;
-    slug: string;
-  };
-}
-
 function FooterLink({ url, text }: FooterLink) {
   const path = usePathname();
   return (
@@ -38,20 +30,8 @@ function FooterLink({ url, text }: FooterLink) {
   );
 }
 
-function CategoryLink({ attributes }: CategoryLink) {
-  return (
-    <li className="flex">
-      <Link
-        href={`/blog/${attributes.slug}`}
-        className="hover:dark:text-violet-400"
-      >
-        {attributes.name}
-      </Link>
-    </li>
-  );
-}
-
 function RenderSocialIcon({ social }: { social: string | undefined }) {
+  console.log(social);
   switch (social) {
     case "WEBSITE":
       return <CgWebsite />;
@@ -70,16 +50,20 @@ export default function Footer({
   logoUrl,
   logoText,
   menuLinks,
-  categoryLinks,
   legalLinks,
   socialLinks,
+  contact
 }: {
   logoUrl: string | null;
   logoText: string | null;
   menuLinks: Array<FooterLink>;
-  categoryLinks: Array<CategoryLink>;
   legalLinks: Array<FooterLink>;
   socialLinks: Array<FooterLink>;
+  contact: {
+    address: string;
+    email: string;
+    phone: string;
+  }
 }) {
 
   return (
@@ -93,11 +77,11 @@ export default function Footer({
           </div>
 
           <div className="col-span-6 text-center md:text-left md:col-span-3">
-            <p className="pb-1 text-lg font-medium">Categories</p>
+            <p className="pb-1 text-lg font-medium">Contact</p>
             <ul>
-              {categoryLinks.map((link: CategoryLink) => (
-                <CategoryLink key={link.id} {...link} />
-              ))}
+              <li>{contact.address}</li>
+              <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
+              <li><a href={`tel:${contact.phone}`}>{contact.phone}</a></li>
             </ul>
           </div>
 

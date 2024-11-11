@@ -18,12 +18,13 @@ async function getGlobal(lang: string): Promise<any> {
     populate: [
       "notificationBanner.link",
       "navbar.links",
+      "navbar.button",
       "navbar.navbarLogo.logoImg",
       "footer.footerLogo.logoImg",
       "footer.menuLinks",
       "footer.legalLinks",
       "footer.socialLinks",
-      "footer.categories",
+      "footer.contact",
     ],
     locale: lang,
   };
@@ -54,6 +55,7 @@ export default async function PageLayout({children, params}: {
         links={navbar.links}
         logoUrl={navbarLogoUrl}
         logoText={navbar.navbarLogo.logoText}
+        button={navbar.button}
       />
 
       <main className="dark:bg-black dark:text-gray-100 min-h-screen">
@@ -66,9 +68,9 @@ export default async function PageLayout({children, params}: {
         logoUrl={footerLogoUrl}
         logoText={footer.footerLogo.logoText}
         menuLinks={footer.menuLinks}
-        categoryLinks={footer.categories.data}
         legalLinks={footer.legalLinks}
         socialLinks={footer.socialLinks}
+        contact={footer.contact}
       />
     </>
   );

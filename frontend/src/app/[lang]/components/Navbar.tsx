@@ -56,10 +56,16 @@ function MobileNavLink({ url, text, closeMenu }: MobileNavLink) {
 
 export default function Navbar({
   links,
+  button,
   logoUrl,
   logoText,
 }: {
   links: Array<NavLink>;
+  button: {
+    url: string;
+    text: string;
+    color: string;
+  };
   logoUrl: string | null;
   logoText: string | null;
 }) {
@@ -82,6 +88,10 @@ export default function Navbar({
           </ul>
         </div>
 
+        <div>
+          <a href={button.url}>{button.text}</a>
+        </div>
+
         <Dialog
           as="div"
           className="lg:hidden"
@@ -90,11 +100,12 @@ export default function Navbar({
         >
           <div className="fixed inset-0 z-40 bg-gray-600 bg-opacity-75" />{" "}
           {/* Overlay */}
-          <Dialog.Panel className="fixed inset-y-0 rtl:left-0 ltr:right-0 z-50 w-full overflow-y-auto bg-gray-800 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-inset sm:ring-white/10">
+          <Dialog.Panel
+            className="fixed inset-y-0 rtl:left-0 ltr:right-0 z-50 w-full overflow-y-auto bg-gray-800 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-inset sm:ring-white/10">
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Strapi</span>
-                {logoUrl && <img className="h-8 w-auto" src={logoUrl} alt="" />}
+                {logoUrl && <img className="h-8 w-auto" src={logoUrl} alt=""/>}
               </a>
               <button
                 type="button"
@@ -102,7 +113,7 @@ export default function Navbar({
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <span className="sr-only">Close menu</span>
-                <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                <XMarkIcon className="h-6 w-6" aria-hidden="true"/>
               </button>
             </div>
             <div className="mt-6 flow-root">
@@ -117,6 +128,9 @@ export default function Navbar({
                   ))}
                 </div>
               </div>
+            </div>
+            <div>
+              <a href={button.url}>{button.text}</a>
             </div>
           </Dialog.Panel>
         </Dialog>
