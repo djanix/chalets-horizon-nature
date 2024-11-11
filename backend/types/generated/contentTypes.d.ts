@@ -1067,7 +1067,10 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.features',
         'sections.heading',
         'sections.photo-gallery',
-        'sections.activity-list'
+        'sections.activity-list',
+        'sections.localisation',
+        'sections.availabilities',
+        'sections.reservation'
       ]
     > &
       Attribute.SetPluginOptions<{

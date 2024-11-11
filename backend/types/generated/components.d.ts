@@ -273,6 +273,17 @@ export interface SectionsActivityList extends Schema.Component {
   };
 }
 
+export interface SectionsAvailabilities extends Schema.Component {
+  collectionName: 'components_sections_availabilities';
+  info: {
+    displayName: 'Availabilities';
+    icon: 'book';
+  };
+  attributes: {
+    description: Attribute.Text;
+  };
+}
+
 export interface SectionsBottomActions extends Schema.Component {
   collectionName: 'components_slices_bottom_actions';
   info: {
@@ -384,6 +395,18 @@ export interface SectionsLeadForm extends Schema.Component {
   };
 }
 
+export interface SectionsLocalisation extends Schema.Component {
+  collectionName: 'components_sections_localisations';
+  info: {
+    displayName: 'Localisation';
+    icon: 'plane';
+  };
+  attributes: {
+    description: Attribute.Text;
+    map: Attribute.Component<'shared.map'>;
+  };
+}
+
 export interface SectionsPhotoGallery extends Schema.Component {
   collectionName: 'components_sections_photo_galleries';
   info: {
@@ -406,6 +429,19 @@ export interface SectionsPricing extends Schema.Component {
   attributes: {
     title: Attribute.String;
     plans: Attribute.Component<'elements.plan', true>;
+  };
+}
+
+export interface SectionsReservation extends Schema.Component {
+  collectionName: 'components_sections_reservations';
+  info: {
+    displayName: 'Reservation';
+    icon: 'envelop';
+  };
+  attributes: {
+    rules: Attribute.RichText;
+    cancellation: Attribute.RichText;
+    note: Attribute.Text;
   };
 }
 
@@ -433,6 +469,17 @@ export interface SectionsTestimonialsGroup extends Schema.Component {
     title: Attribute.String;
     description: Attribute.Text;
     testimonials: Attribute.Component<'elements.testimonial', true>;
+  };
+}
+
+export interface SharedMap extends Schema.Component {
+  collectionName: 'components_shared_maps';
+  info: {
+    displayName: 'Map';
+    icon: 'earth';
+  };
+  attributes: {
+    address: Attribute.String;
   };
 }
 
@@ -533,6 +580,7 @@ declare module '@strapi/types' {
       'links.social-link': LinksSocialLink;
       'meta.metadata': MetaMetadata;
       'sections.activity-list': SectionsActivityList;
+      'sections.availabilities': SectionsAvailabilities;
       'sections.bottom-actions': SectionsBottomActions;
       'sections.feature-columns-group': SectionsFeatureColumnsGroup;
       'sections.feature-rows-group': SectionsFeatureRowsGroup;
@@ -541,10 +589,13 @@ declare module '@strapi/types' {
       'sections.hero': SectionsHero;
       'sections.large-video': SectionsLargeVideo;
       'sections.lead-form': SectionsLeadForm;
+      'sections.localisation': SectionsLocalisation;
       'sections.photo-gallery': SectionsPhotoGallery;
       'sections.pricing': SectionsPricing;
+      'sections.reservation': SectionsReservation;
       'sections.rich-text': SectionsRichText;
       'sections.testimonials-group': SectionsTestimonialsGroup;
+      'shared.map': SharedMap;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_sections_availabilities",
+  "info": {
+    "displayName": "Availabilities",
+    "icon": "book"
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "text"
+    }
+  }
+}

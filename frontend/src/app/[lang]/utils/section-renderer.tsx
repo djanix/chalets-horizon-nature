@@ -8,6 +8,10 @@ import FeatureColumnsGroup from "../components/FeatureColumnsGroup";
 import PhotoGallery from "../components/PhotoGallery";
 import ActivityList from "../components/ActivityList";
 import FeatureRowsGroup from "../components/FeatureRowsGroup";
+import Localisation from "../components/Localisation";
+import RichText from "../components/RichText";
+import Availabilities from "../components/Availabilities";
+import Reservation from "../components/Reservation";
 
 export function sectionRenderer(section: any, index: number) {
   switch (section.__component) {
@@ -31,6 +35,14 @@ export function sectionRenderer(section: any, index: number) {
       return <PhotoGallery key={index} data={section} />;
     case "sections.activity-list":
       return <ActivityList key={index} data={section} />;
+    case "sections.localisation":
+      return <Localisation key={index} data={section} />;
+    case "sections.rich-text":
+      return <RichText key={index} data={{body: section.content}} />;
+    case "sections.availabilities":
+      return <Availabilities key={index} data={section} />;
+    case "sections.reservation":
+      return <Reservation key={index} data={section} />;
     default:
       return null;
   }
