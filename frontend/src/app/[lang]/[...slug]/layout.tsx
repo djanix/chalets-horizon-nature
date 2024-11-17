@@ -58,7 +58,7 @@ export default async function PageLayout({children, params}: {
         button={navbar.button}
       />
 
-      <main className="dark:bg-black dark:text-gray-100 min-h-screen">
+      <main className="min-h-screen">
         {children}
       </main>
 

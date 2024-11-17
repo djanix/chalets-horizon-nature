@@ -336,10 +336,12 @@ export interface SectionsHeading extends Schema.Component {
   collectionName: 'components_sections_headings';
   info: {
     displayName: 'Heading';
+    description: '';
   };
   attributes: {
     heading: Attribute.String & Attribute.Required;
     description: Attribute.String;
+    anchor: Attribute.String;
   };
 }
 

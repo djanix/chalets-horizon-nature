@@ -25,9 +25,8 @@ interface ActivityListProps {
 
 export default function ActivityList({ data }: ActivityListProps) {
   return (
-    <section className="dark:bg-black dark:text-gray-100  m:py-12 lg:py-24">
-      <div className="container mx-auto py-4 space-y-2 text-center">
-        test
+    <section className="m:py-12 lg:py-24">
+      <div className="container mx-auto p-6 py-4 space-y-2 text-center">
         {data.activities.map((activity: Activity, index: number) => (
           <div key={index}>
             <span>{activity.title}</span>

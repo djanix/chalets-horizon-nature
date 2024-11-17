@@ -32,8 +32,8 @@ export default function PhotoGallery({ data }: PhotoGalleryProps) {
   const mediaList = data.mediaList.data;
 
   return (
-    <section className="dark:bg-black dark:text-gray-100  m:py-12 lg:py-24">
-      <div className="container mx-auto py-4 space-y-2 text-center">
+    <section className="m:py-12 lg:py-24">
+      <div className="container mx-auto p-6 py-4 space-y-2 text-center">
         {mediaList.map((media: Media, index: number) => (
           <Media key={index} {...media} />
         ))}
