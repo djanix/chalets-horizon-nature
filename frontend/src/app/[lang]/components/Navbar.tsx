@@ -88,8 +88,10 @@ export default function Navbar({
           </ul>
         </div>
 
-        <div>
-          <a href={button.url}>{button.text}</a>
+        <div className="items-center flex-shrink-0 hidden lg:flex">
+          <div className="items-stretch lg:flex">
+            <a className="text-greyFriends border-2 border-greyFriends px-3 py-1 uppercase" href={button.url}>{button.text}</a>
+          </div>
         </div>
 
         <Dialog
