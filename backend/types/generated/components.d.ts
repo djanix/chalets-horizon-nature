@@ -24,7 +24,7 @@ export interface ElementsFeatureColumn extends Schema.Component {
   attributes: {
     title: Attribute.String & Attribute.Required;
     description: Attribute.Text;
-    icon: Attribute.Media<'images'> & Attribute.Required;
+    icon: Attribute.String & Attribute.CustomField<'plugin::react-icons.icon'>;
   };
 }
 
@@ -39,8 +39,8 @@ export interface ElementsFeatureRow extends Schema.Component {
   attributes: {
     title: Attribute.String & Attribute.Required;
     description: Attribute.Text;
-    media: Attribute.Media<'images' | 'videos'> & Attribute.Required;
     link: Attribute.Component<'links.link'>;
+    icon: Attribute.String & Attribute.CustomField<'plugin::react-icons.icon'>;
   };
 }
 
@@ -301,6 +301,7 @@ export interface SectionsFeatureColumnsGroup extends Schema.Component {
     name: 'FeatureColumnsGroup';
     displayName: 'Feature columns group';
     icon: 'star-of-life';
+    description: '';
   };
   attributes: {
     features: Attribute.Component<'elements.feature-column', true>;

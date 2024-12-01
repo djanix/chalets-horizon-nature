@@ -1,19 +1,9 @@
-import Image from "next/image";
-import { getStrapiMedia } from "../utils/api-helpers";
+import { IconComponent } from "./Icon";
 
 interface Feature {
   text: string;
-  description: string;
-  icon: {
-    data: {
-      id: string;
-      attributes: {
-        name: string;
-        alternativeText: string;
-        url: string;
-      };
-    };
-  };
+  description?: string;
+  icon?: string;
 }
 
 interface FeatureColumnsGroupProps {
@@ -26,18 +16,11 @@ interface FeatureColumnsGroupProps {
 }
 
 function Feature({ text, description, icon }: Readonly<Feature>) {
-  const imageUrl = getStrapiMedia(icon.data?.attributes.url);
   return (
     <div className="flex flex-col items-center mx-12 lg:mx-0">
       <div className="flex items-center">
         <div className="my-6">
-          <Image
-            src={imageUrl ?? ""}
-            alt={icon.data?.attributes.alternativeText || "none provided"}
-            className="inline-block h-32 w-32 rounded-full"
-            width={200}
-            height={200}
-          />
+          {icon && <IconComponent icon={icon} />}
         </div>
       </div>
       <div className="relative text-center">

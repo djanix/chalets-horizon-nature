@@ -1634,7 +1634,7 @@
     semver "7.5.4"
     umzug "3.2.1"
 
-"@strapi/design-system@1.19.0":
+"@strapi/design-system@1.19.0", "@strapi/design-system@^1.13.1":
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/@strapi/design-system/-/design-system-1.19.0.tgz#1b0ca923c22f167baa6d35663e7f47c971df474c"
   integrity sha512-kEQNaRztIcr6I5Zh6mxtE/Nmkk1mylCS5s56ySKDdqOjWZw2BCbS72/J9k6r1RF1TLIDSXJN9r5dHR0ZKtWvBQ==
@@ -1701,7 +1701,23 @@
     react-query "3.39.3"
     react-select "5.7.0"
 
-"@strapi/icons@1.19.0":
+"@strapi/helper-plugin@^4.16.2":
+  version "4.25.12"
+  resolved "https://registry.yarnpkg.com/@strapi/helper-plugin/-/helper-plugin-4.25.12.tgz#50db8649d589b6140f2ed995f81720b5be424bd9"
+  integrity sha512-W4Jl+r0XaLZI1yfIEq/SIjrCiOojSG+x/+A92hK4wgwYlNVd5Iw7oQB8VVj935JQbpFzwQhMGCPrth1NaL7sWg==
+  dependencies:
+    axios "1.7.4"
+    date-fns "2.30.0"
+    formik "2.4.0"
+    immer "9.0.19"
+    lodash "4.17.21"
+    qs "6.11.1"
+    react-helmet "6.1.0"
+    react-intl "6.4.1"
+    react-query "3.39.3"
+    react-select "5.7.0"
+
+"@strapi/icons@1.19.0", "@strapi/icons@^1.13.0":
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/@strapi/icons/-/icons-1.19.0.tgz#efa6b553a7de437171512e3549859faa141a145f"
   integrity sha512-jcS7n3Ps+73fYGadxdaD6owazoDJKN1fHSG9dp8RX4RqkP6BfoHOX5j3aodVLmDX57Ksg6gy5JXf9xEml7nMpQ==
@@ -2888,6 +2904,15 @@ axios@1.6.0:
   integrity sha512-EZ1DYihju9pwVB+jg67ogm+Tmqc6JmhamRN6I4Zt8DfZu5lbcQGw3ozH9lFejSJgs/ibaef3A9PMXPLeefFGJg==
   dependencies:
     follow-redirects "^1.15.0"
+    form-data "^4.0.0"
+    proxy-from-env "^1.1.0"
+
+axios@1.7.4:
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.4.tgz#4c8ded1b43683c8dd362973c393f3ede24052aa2"
+  integrity sha512-DukmaFRnY6AzAALSH4J2M3k6PkaC+MfaAGdEERRWcC9q3/TWQwLpHR8ZRLKTdQ3aBDL64EdluRDjJqKw+BPZEw==
+  dependencies:
+    follow-redirects "^1.15.6"
     form-data "^4.0.0"
     proxy-from-env "^1.1.0"
 
@@ -4733,6 +4758,11 @@ follow-redirects@^1.15.0, follow-redirects@^1.15.4:
   version "1.15.5"
   resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.5.tgz"
   integrity sha512-vSFWUON1B+yAw1VN4xMfxgn5fTUiaOzAJCKBwIIgT/+7CuGy9+r+5gITvP62j3RmaD5Ph65UaERdOSRGUzZtgw==
+
+follow-redirects@^1.15.6:
+  version "1.15.9"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.9.tgz#a604fa10e443bf98ca94228d9eebcc2e8a2c8ee1"
+  integrity sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==
 
 for-in@^1.0.1, for-in@^1.0.2:
   version "1.0.2"
@@ -7971,6 +8001,11 @@ react-helmet@6.1.0, react-helmet@^6.1.0:
     react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
 
+react-icons@^5.2.1:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-5.3.0.tgz#ccad07a30aebd40a89f8cfa7d82e466019203f1c"
+  integrity sha512-DnUk8aFbTyQPSkCfF8dbX6kQjXA9DktMeJqfjrg6cK9vwQVMxmcA3BfP4QoiztVmEHtwlTgLFsPuH2NskKT6eg==
+
 react-intl@6.4.1:
   version "6.4.1"
   resolved "https://registry.npmjs.org/react-intl/-/react-intl-6.4.1.tgz"
@@ -9002,6 +9037,17 @@ strapi-plugin-populate-deep@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/strapi-plugin-populate-deep/-/strapi-plugin-populate-deep-3.0.1.tgz#cd8f9853dc6e9a1859bdcc0176323a29bd2b8509"
   integrity sha512-7t1bPPBN1AGKZlFT/6qsqmwgd7SzTA9CNzEBSzeYEjL/e0GKD2lf4wF11C2vMkfsQW2GhRAXZQRCGlLnV2XHFQ==
+
+strapi-plugin-react-icons@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/strapi-plugin-react-icons/-/strapi-plugin-react-icons-0.3.1.tgz#d3ea3f1bc707178c09ef6eed4f640ade1693be76"
+  integrity sha512-c7NJBCBfEkg8Rc/RKNLFSob2ar4osy8mU+Wjj8w9khzEMzGa7+V9DV8wALH1yuDjoSCKvkybgY4pSNXwBtFSEg==
+  dependencies:
+    "@strapi/design-system" "^1.13.1"
+    "@strapi/helper-plugin" "^4.16.2"
+    "@strapi/icons" "^1.13.0"
+    prop-types "^15.8.1"
+    react-icons "^5.2.1"
 
 stream-chain@2.2.5, stream-chain@^2.2.5:
   version "2.2.5"
