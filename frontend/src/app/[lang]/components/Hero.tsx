@@ -38,7 +38,7 @@ export default function Hero({ data }: HeroProps) {
 
   return (
     <section className="">
-      <div className="flex flex-col justify-center mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
+      <div className="flex flex-col justify-center mx-auto lg:flex-row lg:justify-between">
         <div className="bg-greyFriends-dark text-greyFriends-light flex flex-1 justify-end text-center lg:text-left">
           <div className="max-w-2xl px-32 py-20 box-content">
             <HighlightedText
