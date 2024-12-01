@@ -39,8 +39,8 @@ export default function Hero({ data }: HeroProps) {
   return (
     <section className="">
       <div className="flex flex-col justify-center mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
-        <div className="bg-greyFriends-dark text-greyFriends-light flex flex-1 justify-end py-20 px-32 text-center lg:text-left">
-          <div className="max-w-2xl">
+        <div className="bg-greyFriends-dark text-greyFriends-light flex flex-1 justify-end text-center lg:text-left">
+          <div className="max-w-2xl px-32 py-20 box-content">
             <HighlightedText
               text={data.title}
               tag="h1"
@@ -71,18 +71,15 @@ export default function Hero({ data }: HeroProps) {
           </div>
         </div>
 
-        <div className="bg-greyFriends-light flex flex-1 py-20 px-32 min-h-96">
-          <div className="max-w-2xl">
-            <Image
-              src={imgUrl || ""}
-              alt={
-                data.picture.data.attributes.alternativeText || "none provided"
-              }
-              className="object-cover"
-              width={600}
-              height={600}
-            />
-          </div>
+        <div className="bg-greyFriends-light flex flex-1 min-h-96 relative">
+          <Image
+            src={imgUrl || ""}
+            alt={
+              data.picture.data.attributes.alternativeText || ""
+            }
+            className="object-cover"
+            fill
+          />
         </div>
       </div>
     </section>
