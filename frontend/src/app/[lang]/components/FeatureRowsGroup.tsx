@@ -26,9 +26,10 @@ function Feature({ title, description, icon }: Readonly<Feature>) {
       <div className="relative mb-1">
         <p className="text-lg font-bold">{title}</p>
       </div>
-      <div className="flex items-center">
-        {icon && <IconComponent icon={icon} />}
-        <p className="text-gray-600 ml-2">{description}</p>
+
+      <div className="flex items-center text-natural-dark">
+        {icon && <IconComponent icon={icon} size={24}/>}
+        {description && <p className="ml-2">{description}</p>}
       </div>
     </div>
   );
