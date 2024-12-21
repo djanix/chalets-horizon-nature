@@ -22,8 +22,8 @@ function Media({ attributes }: Readonly<Media>) {
     <Image
       src={imageUrl ?? ""}
       alt=""
-      width={400}
-      height={400}
+      className="object-cover"
+      fill
     />
   );
 }
@@ -33,10 +33,22 @@ export default function PhotoGallery({ data }: PhotoGalleryProps) {
 
   return (
     <section className="m:py-12 lg:py-24">
-      <div className="container mx-auto p-6 py-4 space-y-2 text-center">
-        {mediaList.map((media: Media, index: number) => (
-          <Media key={index} {...media} />
-        ))}
+      <div className="container flex mx-auto p-6 py-4 text-center">
+        <div className="flex-1 mr-2">
+          <div className="relative aspect-square">
+            <Media {...mediaList[0]}></Media>
+          </div>
+        </div>
+        <div className="flex-1 grid grid-cols-2 gap-2">
+          {mediaList.map((media: Media, index: number) => {
+            if (index === 0 || index > 4) return null;
+            return (
+              <div key={index} className="relative aspect-square">
+                <Media {...media} />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
