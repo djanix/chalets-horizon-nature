@@ -31,7 +31,6 @@ function FooterLink({ url, text }: FooterLink) {
 }
 
 function RenderSocialIcon({ social }: { social: string | undefined }) {
-  console.log(social);
   switch (social) {
     case "WEBSITE":
       return <CgWebsite />;

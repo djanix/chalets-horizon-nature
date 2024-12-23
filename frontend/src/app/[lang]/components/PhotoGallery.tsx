@@ -1,14 +1,27 @@
 "use client";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { getStrapiMedia } from "../utils/api-helpers";
 import { Squares2X2Icon } from "@heroicons/react/24/outline";
-import {useState} from "react";
+import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import 'photoswipe/style.css';
 
+interface MediaImage {
+  url: string;
+  width: number;
+  height: number;
+  hash: string;
+}
 
 interface Media {
   id: string;
-  attributes: {
-    url: string;
+  attributes: MediaImage & {
+    formats: {
+      thumbnail: MediaImage,
+      small: MediaImage,
+      medium: MediaImage,
+      large: MediaImage,
+    }
   };
 }
 
@@ -21,14 +34,23 @@ interface PhotoGalleryProps {
 }
 
 function Media({ attributes }: Readonly<Media>) {
+  // const imageThumbnailUrl = getStrapiMedia(attributes.formats?.large?.url || attributes.url);
   const imageUrl = getStrapiMedia(attributes.url);
   return (
-    <Image
-      src={imageUrl ?? ""}
-      alt=""
-      className="object-cover"
-      fill
-    />
+    <a
+      href={imageUrl ?? ""}
+      data-pswp-width={attributes.width}
+      data-pswp-height={attributes.height}
+      target="_blank"
+      rel="noreferrer"
+    >
+      <Image
+        src={imageUrl ?? ""}
+        alt=""
+        className="object-cover"
+        fill
+      />
+    </a>
   );
 }
 
@@ -40,9 +62,25 @@ export default function PhotoGallery({ data }: PhotoGalleryProps) {
     setShowFullList(!showFullList);
   };
 
+  useEffect(() => {
+    let lightbox = new PhotoSwipeLightbox({
+      gallery: '#img-gallery',
+      // dataSource: mediaList.map(m => { return {src: m.attributes.url}}),
+      children: 'a',
+      pswpModule: () => import('photoswipe'),
+    });
+    lightbox.init();
+
+    return () => {
+      lightbox.destroy();
+      //@ts-expect-error
+      lightbox = null;
+    };
+  }, []);
+
   return (
     <section>
-      <div className="container relative flex mx-auto px-6">
+      <div id="img-gallery" className="pswp-gallery container relative flex mx-auto px-6">
         <div className="flex-1 mr-2">
           <div className="relative aspect-square">
             <Media {...mediaList[0]}></Media>
