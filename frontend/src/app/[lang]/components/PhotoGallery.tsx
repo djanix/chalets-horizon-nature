@@ -41,6 +41,7 @@ function Media({ attributes }: Readonly<Media>) {
       href={imageUrl ?? ""}
       data-pswp-width={attributes.width}
       data-pswp-height={attributes.height}
+      data-cropped="true"
       target="_blank"
       rel="noreferrer"
     >
@@ -65,7 +66,7 @@ export default function PhotoGallery({ data }: PhotoGalleryProps) {
   useEffect(() => {
     let lightbox = new PhotoSwipeLightbox({
       gallery: '#img-gallery',
-      // dataSource: mediaList.map(m => { return {src: m.attributes.url}}),
+      // dataSource: mediaList.map(m => ({ src: m.attributes.url })),
       children: 'a',
       pswpModule: () => import('photoswipe'),
     });
@@ -76,11 +77,11 @@ export default function PhotoGallery({ data }: PhotoGalleryProps) {
       //@ts-expect-error
       lightbox = null;
     };
-  }, []);
+  }, [mediaList]);
 
   return (
-    <section>
-      <div id="img-gallery" className="pswp-gallery container relative flex mx-auto px-6">
+    <section id="img-gallery" className="pswp-gallery">
+      <div className="container relative flex mx-auto px-6">
         <div className="flex-1 mr-2">
           <div className="relative aspect-square">
             <Media {...mediaList[0]}></Media>
@@ -97,19 +98,19 @@ export default function PhotoGallery({ data }: PhotoGalleryProps) {
           })}
         </div>
 
-        <div className="absolute right-0 bottom-0 pr-10 pb-4">
+        <div className="absolute right-10 bottom-4">
           <button onClick={toggleFullList} className="text-greyFriends border-2 border-greyFriends bg-natural-light px-2 py-1 align-bottom">
             <Squares2X2Icon className="h-7 w-7 text-greyFriends inline-block mr-1" aria-hidden="true" />
-            Afficher toutes les photos
+            {showFullList ? "Cacher les photos supplémentaires" : "Afficher toutes les photos"}
           </button>
         </div>
       </div>
 
       <div className="container mx-auto px-6 pt-2 grid grid-cols-4 gap-2">
         {mediaList.map((media: Media, index: number) => {
-          if (!showFullList || index < 5) return null;
+          if (index < 5) return null;
           return (
-            <div key={index} className="relative aspect-square">
+            <div key={index} className={`${!showFullList && 'hidden'} relative aspect-square`}>
               <Media {...media} />
             </div>
           );
