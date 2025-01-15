@@ -23,15 +23,22 @@ interface ActivityListProps {
   };
 }
 
-export default function ActivityList({ data }: ActivityListProps) {
+export default function ActivityList({data}: ActivityListProps) {
   return (
-    <section className="m:py-12 lg:py-24">
-      <div className="container mx-auto p-6 py-4 space-y-2 text-center">
+    <section className="container mx-auto">
+      <div className="px-6">
         {data.activities.map((activity: Activity, index: number) => (
           <div key={index}>
-            <span>{activity.title}</span>
-            <RichText data={{body: activity.content}} />
-            <Media data={{file: activity.picture}} />
+            <div className={`md:flex mb-12 gap-8 ${index % 2 === 0 && 'flex-row-reverse'}`}>
+              <div className="flex-1">
+                <Media data={{file: activity.picture}}/>
+              </div>
+
+              <div className="flex-1">
+                <h3 className="text-greyFriends-dark font-bold text-3xl mb-2">{activity.title}</h3>
+                <RichText data={{body: activity.content}}/>
+              </div>
+            </div>
           </div>
         ))}
       </div>

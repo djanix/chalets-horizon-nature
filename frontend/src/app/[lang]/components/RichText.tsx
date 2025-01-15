@@ -10,7 +10,7 @@ interface RichTextProps {
 export default function RichText({ data }: RichTextProps) {
   // TODO: STYLE THE MARKDOWN
   return (
-    <section className="rich-text p-6">
+    <section className="rich-text">
       <Markdown children={data.body} remarkPlugins={[remarkGfm]} />
     </section>
   );
