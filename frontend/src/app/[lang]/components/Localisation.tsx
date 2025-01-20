@@ -1,8 +1,8 @@
 "use client";
-import { APIProvider, Map, AdvancedMarker, InfoWindow, useAdvancedMarkerRef } from '@vis.gl/react-google-maps';
+// import { APIProvider, Map, AdvancedMarker, InfoWindow, useAdvancedMarkerRef } from '@vis.gl/react-google-maps';
 import { useState } from "react";
 
-interface Map {
+interface IMap {
   id: string;
   address: string;
 }
@@ -11,7 +11,7 @@ interface LocalisationProps {
   data: {
     id: string;
     description: string;
-    map: Map;
+    map: IMap;
   };
 }
 
@@ -19,8 +19,8 @@ interface LocalisationProps {
 export default function Localisation({ data }: LocalisationProps) {
   const API_KEY = process.env.GOOGLE_MAP_API_KEY || '';
 
-  const [infoWindowOpen, setInfoWindowOpen] = useState(true);
-  const [markerRef, marker] = useAdvancedMarkerRef();
+  // const [infoWindowOpen, setInfoWindowOpen] = useState(true);
+  // const [markerRef, marker] = useAdvancedMarkerRef();
 
   const [markerLocation, setMarkerLocation] = useState({
     lat: 46.26914,
@@ -29,42 +29,55 @@ export default function Localisation({ data }: LocalisationProps) {
 
   return (
     <section className="">
-      <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
-        <div className="flex flex-col justify-center p-6 text-center rounded-lg lg:max-w-md xl:max-w-lg lg:text-left">
-          {data.description}
-        </div>
-        <div className="relative flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
-          <APIProvider apiKey={API_KEY}>
-            <Map
-              mapId='ADDRESS_MAP'
-              style={{width: '600px', height: '600px'}}
-              defaultCenter={markerLocation}
-              defaultZoom={15}
-              gestureHandling={'greedy'}
-              disableDefaultUI={false}
-            >
-              <AdvancedMarker
-                ref={markerRef}
-                position={markerLocation}
-                title={data.map.address}
-                onClick={() => setInfoWindowOpen(!infoWindowOpen)}
-              />
+      <div className="container flex flex-col justify-center p-6 mx-auto lg:flex-row-reverse lg:justify-between">
+        <div className="relative flex items-center justify-center pt-[56.25%] w-full overflow-hidden">
+          <iframe
+            className="border-0 absolute top-0 left-0 right-0 bottom-0 w-full h-full"
+            loading="lazy"
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+            // src={`https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${data.map.address}`}>
+            src={`https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${markerLocation.lat},${markerLocation.lng}`}>
+          </iframe>
 
-              {infoWindowOpen && (
-                <InfoWindow
-                  anchor={marker}
-                  maxWidth={200}
-                  onCloseClick={() => setInfoWindowOpen(false)}
-                >
-                  <b>Chalets Horizon Nature</b>
-                  <br />
-                  {data.map.address}
-                  <br />
-                  <a href={`https://www.google.com/maps/search/${data.map.address}`} className="text-[#1a73e8] hover:underline">View on Google Maps</a>
-                </InfoWindow>
-              )}
-            </Map>
-          </APIProvider>
+          {/*<APIProvider apiKey={API_KEY}>*/}
+          {/*  <Map*/}
+          {/*    mapId='ADDRESS_MAP'*/}
+          {/*    style={{width: '600px', height: '600px'}}*/}
+          {/*    defaultCenter={markerLocation}*/}
+          {/*    defaultZoom={15}*/}
+          {/*    gestureHandling={'greedy'}*/}
+          {/*    disableDefaultUI={false}*/}
+          {/*  >*/}
+          {/*    <AdvancedMarker*/}
+          {/*      ref={markerRef}*/}
+          {/*      position={markerLocation}*/}
+          {/*      title={data.map.address}*/}
+          {/*      onClick={() => setInfoWindowOpen(!infoWindowOpen)}*/}
+          {/*    />*/}
+
+          {/*    {infoWindowOpen && (*/}
+          {/*      <InfoWindow*/}
+          {/*        anchor={marker}*/}
+          {/*        maxWidth={250}*/}
+          {/*        onCloseClick={() => setInfoWindowOpen(false)}*/}
+          {/*        headerContent={<span className="font-bold text-[14px]">Chalets Horizon Nature</span>}*/}
+          {/*      >*/}
+          {/*        <div className="max-w-36">*/}
+          {/*          {data.map.address}*/}
+          {/*          <br/>*/}
+          {/*          <a href={`https://www.google.com/maps/search/${data.map.address}`}*/}
+          {/*             className="text-[#1a73e8] hover:underline">View on Google Maps</a>*/}
+          {/*        </div>*/}
+          {/*      </InfoWindow>*/}
+          {/*    )}*/}
+          {/*  </Map>*/}
+          {/*</APIProvider>*/}
+        </div>
+
+        <div
+          className="flex flex-col justify-center p-6 pl-0 text-center lg:text-left lg:w-1/2">
+          {data.description}
         </div>
       </div>
     </section>
