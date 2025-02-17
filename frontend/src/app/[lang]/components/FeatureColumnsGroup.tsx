@@ -32,7 +32,7 @@ export default function FeatureColumnsGroup({ data }: FeatureColumnsGroupProps) 
 
   return (
     <section className="container mx-auto">
-      <div className="px-8 grid gap-6 grid-cols-1 sm:grid-cols-2 max-w-xl mx-auto">
+      <div className="pl-28 grid gap-6 grid-cols-1 sm:grid-cols-2 max-w-xl mx-auto">
         {data.features.map((feature: Feature, index: number) => (
           <Feature key={index} {...feature} />
         ))}

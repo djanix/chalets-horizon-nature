@@ -9,7 +9,7 @@ import PhotoGallery from "../components/PhotoGallery";
 import ActivityList from "../components/ActivityList";
 import FeatureRowsGroup from "../components/FeatureRowsGroup";
 import Localisation from "../components/Localisation";
-import RichText from "../components/RichText";
+import RichTextContainer from "../components/RichTextContainer";
 import Availabilities from "../components/Availabilities";
 import Reservation from "../components/Reservation";
 
@@ -38,7 +38,7 @@ export function sectionRenderer(section: any, index: number) {
     case "sections.localisation":
       return <Localisation key={index} data={section} />;
     case "sections.rich-text":
-      return <RichText key={index} data={{body: section.content}} />;
+      return <RichTextContainer key={index} data={{body: section.content}} />;
     case "sections.availabilities":
       return <Availabilities key={index} data={section} />;
     case "sections.reservation":

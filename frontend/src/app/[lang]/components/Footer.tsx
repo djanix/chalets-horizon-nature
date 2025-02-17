@@ -1,10 +1,7 @@
 "use client";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Logo from "./Logo";
-import { CgWebsite } from "react-icons/cg";
-import { FaDiscord } from "react-icons/fa";
-import { AiFillTwitterCircle, AiFillYoutube } from "react-icons/ai";
+import { CgFacebook, CgInstagram } from "react-icons/cg";
 
 interface FooterLink {
   id: number;
@@ -14,32 +11,12 @@ interface FooterLink {
   social?: string;
 }
 
-function FooterLink({ url, text }: FooterLink) {
-  const path = usePathname();
-  return (
-    <li className="flex">
-      <Link
-        href={url}
-        className={`hover:dark:text-violet-400 ${
-          path === url && "dark:text-violet-400 dark:border-violet-400"
-        }}`}
-      >
-        {text}
-      </Link>
-    </li>
-  );
-}
-
 function RenderSocialIcon({ social }: { social: string | undefined }) {
   switch (social) {
-    case "WEBSITE":
-      return <CgWebsite />;
-    case "TWITTER":
-      return <AiFillTwitterCircle />;
-    case "YOUTUBE":
-      return <AiFillYoutube />;
-    case "DISCORD":
-      return <FaDiscord />;
+    case "Facebook":
+      return <CgFacebook className="h-5 w-5" />;
+    case "Instagram":
+      return <CgInstagram className="h-5 w-5" />;
     default:
       return null;
   }
@@ -109,7 +86,7 @@ export default function Footer({
                       href={link.url}
                       title={link.text}
                       target={link.newTab ? "_blank" : "_self"}
-                      className="flex items-center justify-center w-10 h-10 rounded-full bg-natural-dark"
+                      className="flex items-center justify-center w-10 h-10 rounded-full bg-natural-dark hover:bg-natural-dark/80"
                     >
                       <RenderSocialIcon social={link.social} />
                     </a>
