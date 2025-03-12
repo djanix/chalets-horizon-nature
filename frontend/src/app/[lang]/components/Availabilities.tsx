@@ -35,8 +35,6 @@ export default function Availabilities({ data }: AvailabilitiesProps) {
     return { from: startDate, to: endDate };
   });
 
-  console.log(data.reservations, filteredDates, disabledDates);
-
   return (
     <section>
       <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row">
