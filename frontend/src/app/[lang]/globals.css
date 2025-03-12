@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @import "react-slideshow-image/dist/styles.css";
+@import "react-day-picker/style.css";
 
 body {
   @apply bg-natural-light;
@@ -133,4 +135,15 @@ body {
 
 .react-slideshow-container [aria-label="Next Slide"] {
   margin-right: 1rem;
+}
+
+
+/*******************************************
+  React Day Picker Styles
+*******************************************/
+
+.rdp-root {
+  @apply shadow-lg p-5;
+  --rdp-accent-color: theme('colors.greyFriends.DEFAULT');
+  --rdp-range_middle-background-color: theme('colors.beige');
 }
