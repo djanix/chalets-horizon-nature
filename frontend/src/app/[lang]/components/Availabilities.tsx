@@ -22,7 +22,7 @@ export default function Availabilities({ data }: AvailabilitiesProps) {
   const [selected, setSelected] = useState<DateRange>();
 
   const filteredDates = data.reservations.filter(reservation => {
-    return new Date(reservation.endDate) < new Date();
+    return new Date(reservation.endDate) > new Date();
   });
 
   const disabledDates = filteredDates.map(reservation => {
@@ -34,6 +34,8 @@ export default function Availabilities({ data }: AvailabilitiesProps) {
     const endDate = new Date(Number(endYear), Number(endMonth) - 1, Number(endDay) - 1);
     return { from: startDate, to: endDate };
   });
+
+  console.log(data.reservations, filteredDates, disabledDates);
 
   return (
     <section>
