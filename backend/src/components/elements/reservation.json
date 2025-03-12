@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_elements_reservations",
+  "info": {
+    "displayName": "Reservation",
+    "icon": "calendar",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "startDate": {
+      "type": "date"
+    },
+    "endDate": {
+      "type": "date"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

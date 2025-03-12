@@ -2,12 +2,18 @@
   "collectionName": "components_sections_availabilities",
   "info": {
     "displayName": "Availabilities",
-    "icon": "book"
+    "icon": "book",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "description": {
       "type": "text"
+    },
+    "reservations": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.reservation"
     }
   }
 }

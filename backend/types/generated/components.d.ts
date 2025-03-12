@@ -126,6 +126,20 @@ export interface ElementsPlan extends Schema.Component {
   };
 }
 
+export interface ElementsReservation extends Schema.Component {
+  collectionName: 'components_elements_reservations';
+  info: {
+    displayName: 'Reservation';
+    icon: 'calendar';
+    description: '';
+  };
+  attributes: {
+    startDate: Attribute.Date;
+    endDate: Attribute.Date;
+    title: Attribute.String;
+  };
+}
+
 export interface ElementsTestimonial extends Schema.Component {
   collectionName: 'components_slices_testimonials';
   info: {
@@ -274,9 +288,11 @@ export interface SectionsAvailabilities extends Schema.Component {
   info: {
     displayName: 'Availabilities';
     icon: 'book';
+    description: '';
   };
   attributes: {
     description: Attribute.Text;
+    reservations: Attribute.Component<'elements.reservation', true>;
   };
 }
 
@@ -581,6 +597,7 @@ declare module '@strapi/types' {
       'elements.logos': ElementsLogos;
       'elements.notification-banner': ElementsNotificationBanner;
       'elements.plan': ElementsPlan;
+      'elements.reservation': ElementsReservation;
       'elements.testimonial': ElementsTestimonial;
       'layout.footer': LayoutFooter;
       'layout.logo': LayoutLogo;

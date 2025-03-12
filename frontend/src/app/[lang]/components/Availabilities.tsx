@@ -7,14 +7,33 @@ interface AvailabilitiesProps {
   data: {
     id: string;
     description: string;
+    reservations: Reservation[];
   };
+}
+
+interface Reservation {
+  title: string;
+  startDate: string;
+  endDate: string;
 }
 
 export default function Availabilities({ data }: AvailabilitiesProps) {
   const defaultClassNames = getDefaultClassNames();
   const [selected, setSelected] = useState<DateRange>();
 
-  console.log(new Date(2025,3,25));
+  const filteredDates = data.reservations.filter(reservation => {
+    return new Date(reservation.endDate) < new Date();
+  });
+
+  const disabledDates = filteredDates.map(reservation => {
+    // split the date into year, month, day to prevent timezone issues
+    const [startYear, startMonth, startDay] = reservation.startDate.split('-');
+    const [endYear, endMonth, endDay] = reservation.endDate.split('-');
+
+    const startDate = new Date(Number(startYear), Number(startMonth) - 1, Number(startDay));
+    const endDate = new Date(Number(endYear), Number(endMonth) - 1, Number(endDay) - 1);
+    return { from: startDate, to: endDate };
+  });
 
   return (
     <section>
@@ -32,8 +51,7 @@ export default function Availabilities({ data }: AvailabilitiesProps) {
             excludeDisabled
             disabled={[
               { before: new Date() },
-              { from: new Date(2025,2,25), to: new Date(2025,2,27) },
-              { from: new Date(2025,2,17), to: new Date(2025,2,19) },
+              ...disabledDates
             ]}
             footer={
               (selected?.from && selected?.to) ? `Selected: ${selected.from.toLocaleDateString()} to ${selected.to.toLocaleDateString()}` : "Pick a day."
