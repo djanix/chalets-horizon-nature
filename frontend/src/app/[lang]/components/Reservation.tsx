@@ -11,14 +11,21 @@ interface ReservationProps {
 
 export default function Reservation({ data }: ReservationProps) {
   return (
-    <section className="">
-      <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
-        <div className="flex flex-col justify-center p-6 text-center rounded-lg lg:max-w-md xl:max-w-lg lg:text-left">
-          {data.note}
+    <section>
+      <div className="container flex flex-col justify-center mx-auto lg:flex-row lg:justify-between px-6">
+        <div className="flex flex-col justify-center pb-6 text-center rounded-lg lg:max-w-md xl:max-w-lg lg:text-left">
+          <h3 className="text-xl font-bold">Réservation à venir.</h3>
+          {/*{data.note}*/}
         </div>
-        <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
-          <RichText data={{body: data.rules}} />
-          <RichText data={{body: data.cancellation}} />
+
+        <div>
+          <div className="pb-5">
+            <RichText data={{body: data.rules}} />
+          </div>
+
+          <div>
+            <RichText data={{body: data.cancellation}} />
+          </div>
         </div>
       </div>
     </section>

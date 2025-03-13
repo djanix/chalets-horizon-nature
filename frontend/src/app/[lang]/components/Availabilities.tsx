@@ -20,6 +20,12 @@ interface Reservation {
 export default function Availabilities({ data }: AvailabilitiesProps) {
   const defaultClassNames = getDefaultClassNames();
   const [selected, setSelected] = useState<DateRange>();
+  const dateOptions: Intl.DateTimeFormatOptions = {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  };
 
   const filteredDates = data.reservations.filter(reservation => {
     return new Date(reservation.endDate) > new Date();
@@ -37,11 +43,11 @@ export default function Availabilities({ data }: AvailabilitiesProps) {
 
   return (
     <section>
-      <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row">
+      <div className="container flex flex-col justify-center mx-auto lg:flex-row">
         <div className="flex flex-col justify-center p-6 text-center rounded-lg lg:max-w-md xl:max-w-lg lg:text-left whitespace-pre-wrap">
           {data.description}
         </div>
-        <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+        <div className="flex items-center justify-center p-6 mt-8 lg:mt-0">
           <DayPicker
             mode="range"
             selected={selected}
@@ -54,11 +60,18 @@ export default function Availabilities({ data }: AvailabilitiesProps) {
               ...disabledDates
             ]}
             footer={
-              (selected?.from && selected?.to) ? `Selected: ${selected.from.toLocaleDateString()} to ${selected.to.toLocaleDateString()}` : "Pick a day."
+            <div>
+              {(selected?.from && selected?.to) ?
+                <div>
+                  Arrivée: {selected.from.toLocaleDateString("fr-CA", dateOptions)}<br />
+                  Départ: {selected.to.toLocaleDateString("fr-CA", dateOptions)}
+                </div>
+              : <div>Choisissez une date.</div>}
+            </div>
             }
             classNames={{
               today: `${defaultClassNames.today} font-bold`,
-              footer: 'pt-5 text-center',
+              footer: 'pt-5 h-20 text-center',
             }}
           />
         </div>
