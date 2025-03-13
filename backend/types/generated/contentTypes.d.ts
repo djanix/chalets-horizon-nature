@@ -788,6 +788,51 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface PluginReactIconsIconlibrary extends Schema.CollectionType {
+  collectionName: 'iconlibrary';
+  info: {
+    singularName: 'iconlibrary';
+    pluralName: 'iconlibraries';
+    displayName: 'IconLibrary';
+  };
+  options: {
+    draftAndPublish: false;
+    comment: '';
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    abbreviation: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        maxLength: 3;
+      }>;
+    isEnabled: Attribute.Boolean & Attribute.DefaultTo<true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::react-icons.iconlibrary',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::react-icons.iconlibrary',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiArticleArticle extends Schema.CollectionType {
   collectionName: 'articles';
   info: {
@@ -807,7 +852,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
         maxLength: 256;
       }>;
     slug: Attribute.UID<'api::article.article', 'title'>;
-    cover: Attribute.Media;
+    cover: Attribute.Media<'images' | 'files' | 'videos'>;
     category: Attribute.Relation<
       'api::article.article',
       'manyToOne',
@@ -859,7 +904,7 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    avatar: Attribute.Media;
+    avatar: Attribute.Media<'images' | 'files' | 'videos'>;
     email: Attribute.String;
     articles: Attribute.Relation<
       'api::author.author',
@@ -946,7 +991,7 @@ export interface ApiGlobalGlobal extends Schema.SingleType {
           localized: true;
         };
       }>;
-    favicon: Attribute.Media &
+    favicon: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1065,7 +1110,12 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.pricing',
         'sections.lead-form',
         'sections.features',
-        'sections.heading'
+        'sections.heading',
+        'sections.photo-gallery',
+        'sections.activity-list',
+        'sections.localisation',
+        'sections.availabilities',
+        'sections.reservation'
       ]
     > &
       Attribute.SetPluginOptions<{
@@ -1162,6 +1212,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'plugin::react-icons.iconlibrary': PluginReactIconsIconlibrary;
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;

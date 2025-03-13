@@ -1,10 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @import "react-slideshow-image/dist/styles.css";
+@import "react-day-picker/style.css";
 
 body {
-  @apply dark:bg-black
+  @apply bg-natural-light;
 }
 
 
@@ -14,27 +16,27 @@ body {
 
 /* Headers */
 .rich-text h1 {
-  @apply text-4xl font-bold mb-4 text-violet-400;
+  @apply text-4xl font-bold mb-4 text-greyFriends;
 }
 
 .rich-text h2 {
-  @apply text-3xl font-bold mb-4 text-violet-400;
+  @apply text-3xl font-bold mb-4 text-greyFriends;
 }
 
 .rich-text h3 {
-  @apply text-2xl font-bold mb-4 text-violet-400;
+  @apply text-2xl font-bold mb-4 text-greyFriends;
 }
 
 .rich-text h4 {
-  @apply text-xl font-bold mb-4 text-violet-400;
+  @apply text-xl font-bold mb-4 text-greyFriends;
 }
 
 .rich-text h5 {
-  @apply text-lg font-bold mb-4 text-violet-400;
+  @apply text-lg font-bold mb-4 text-greyFriends;
 }
 
 .rich-text h6 {
-  @apply text-base font-bold mb-4 text-violet-200;
+  @apply text-base font-bold mb-4 text-greyFriends-light;
 }
 
 /* Horizontal rules */
@@ -133,4 +135,15 @@ body {
 
 .react-slideshow-container [aria-label="Next Slide"] {
   margin-right: 1rem;
+}
+
+
+/*******************************************
+  React Day Picker Styles
+*******************************************/
+
+.rdp-root {
+  @apply shadow-lg p-5;
+  --rdp-accent-color: theme('colors.greyFriends.DEFAULT');
+  --rdp-range_middle-background-color: theme('colors.beige');
 }

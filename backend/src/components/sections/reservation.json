@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_sections_reservations",
+  "info": {
+    "displayName": "Reservation",
+    "icon": "envelop"
+  },
+  "options": {},
+  "attributes": {
+    "rules": {
+      "type": "richtext"
+    },
+    "cancellation": {
+      "type": "richtext"
+    },
+    "note": {
+      "type": "text"
+    }
+  }
+}

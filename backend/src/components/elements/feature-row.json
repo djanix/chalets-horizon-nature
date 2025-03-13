@@ -15,19 +15,14 @@
     "description": {
       "type": "text"
     },
-    "media": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "videos"
-      ]
-    },
     "link": {
       "type": "component",
       "repeatable": false,
       "component": "links.link"
+    },
+    "icon": {
+      "type": "customField",
+      "customField": "plugin::react-icons.icon"
     }
   }
 }

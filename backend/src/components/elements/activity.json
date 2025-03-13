@@ -1,19 +1,13 @@
 {
-  "collectionName": "components_slices_heroes",
+  "collectionName": "components_elements_activities",
   "info": {
-    "name": "Hero",
-    "displayName": "Hero",
-    "icon": "heading",
+    "displayName": "activity",
     "description": ""
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
-    },
-    "description": {
-      "type": "text",
       "required": true
     },
     "picture": {
@@ -24,10 +18,8 @@
         "images"
       ]
     },
-    "buttons": {
-      "type": "component",
-      "repeatable": true,
-      "component": "links.button-link"
+    "content": {
+      "type": "richtext"
     }
   }
 }
