@@ -104,28 +104,6 @@ export interface ElementsNotificationBanner extends Schema.Component {
   };
 }
 
-export interface ElementsPlan extends Schema.Component {
-  collectionName: 'components_elements_plans';
-  info: {
-    name: 'plan';
-    displayName: 'Pricing plan';
-    icon: 'search-dollar';
-    description: '';
-  };
-  attributes: {
-    name: Attribute.String;
-    description: Attribute.Text;
-    isRecommended: Attribute.Boolean;
-    price: Attribute.Decimal;
-    pricePeriod: Attribute.String;
-    product_features: Attribute.Relation<
-      'elements.plan',
-      'oneToMany',
-      'api::product-feature.product-feature'
-    >;
-  };
-}
-
 export interface ElementsReservation extends Schema.Component {
   collectionName: 'components_elements_reservations';
   info: {
@@ -137,21 +115,6 @@ export interface ElementsReservation extends Schema.Component {
     startDate: Attribute.Date;
     endDate: Attribute.Date;
     title: Attribute.String;
-  };
-}
-
-export interface ElementsTestimonial extends Schema.Component {
-  collectionName: 'components_slices_testimonials';
-  info: {
-    name: 'Testimonial';
-    displayName: 'Testimonial';
-    icon: 'user-check';
-    description: '';
-  };
-  attributes: {
-    picture: Attribute.Media<'images'> & Attribute.Required;
-    text: Attribute.Text & Attribute.Required;
-    authorName: Attribute.String & Attribute.Required;
   };
 }
 
@@ -378,21 +341,6 @@ export interface SectionsHero extends Schema.Component {
   };
 }
 
-export interface SectionsLargeVideo extends Schema.Component {
-  collectionName: 'components_slices_large_videos';
-  info: {
-    name: 'LargeVideo';
-    displayName: 'Large video';
-    icon: 'play-circle';
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.String;
-    video: Attribute.Media<'videos'> & Attribute.Required;
-    poster: Attribute.Media<'images'>;
-  };
-}
-
 export interface SectionsLeadForm extends Schema.Component {
   collectionName: 'components_sections_lead_forms';
   info: {
@@ -434,19 +382,6 @@ export interface SectionsPhotoGallery extends Schema.Component {
   };
 }
 
-export interface SectionsPricing extends Schema.Component {
-  collectionName: 'components_sections_pricings';
-  info: {
-    name: 'Pricing';
-    displayName: 'Pricing';
-    icon: 'dollar-sign';
-  };
-  attributes: {
-    title: Attribute.String;
-    plans: Attribute.Component<'elements.plan', true>;
-  };
-}
-
 export interface SectionsReservation extends Schema.Component {
   collectionName: 'components_sections_reservations';
   info: {
@@ -469,21 +404,6 @@ export interface SectionsRichText extends Schema.Component {
   };
   attributes: {
     content: Attribute.RichText;
-  };
-}
-
-export interface SectionsTestimonialsGroup extends Schema.Component {
-  collectionName: 'components_slices_testimonials_groups';
-  info: {
-    name: 'TestimonialsGroup';
-    displayName: 'Testimonials group';
-    icon: 'user-friends';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    testimonials: Attribute.Component<'elements.testimonial', true>;
   };
 }
 
@@ -522,20 +442,6 @@ export interface SharedMedia extends Schema.Component {
   };
 }
 
-export interface SharedQuote extends Schema.Component {
-  collectionName: 'components_shared_quotes';
-  info: {
-    displayName: 'Quote';
-    icon: 'indent';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    body: Attribute.Text & Attribute.Required;
-    author: Attribute.String;
-  };
-}
-
 export interface SharedRichText extends Schema.Component {
   collectionName: 'components_shared_rich_texts';
   info: {
@@ -563,29 +469,6 @@ export interface SharedSeo extends Schema.Component {
   };
 }
 
-export interface SharedSlider extends Schema.Component {
-  collectionName: 'components_shared_sliders';
-  info: {
-    displayName: 'Slider';
-    icon: 'address-book';
-    description: '';
-  };
-  attributes: {
-    files: Attribute.Media<'images', true>;
-  };
-}
-
-export interface SharedVideoEmbed extends Schema.Component {
-  collectionName: 'components_sections_video_embeds';
-  info: {
-    displayName: 'Video Embed';
-    description: '';
-  };
-  attributes: {
-    url: Attribute.String & Attribute.Required;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -596,9 +479,7 @@ declare module '@strapi/types' {
       'elements.footer-section': ElementsFooterSection;
       'elements.logos': ElementsLogos;
       'elements.notification-banner': ElementsNotificationBanner;
-      'elements.plan': ElementsPlan;
       'elements.reservation': ElementsReservation;
-      'elements.testimonial': ElementsTestimonial;
       'layout.footer': LayoutFooter;
       'layout.logo': LayoutLogo;
       'layout.navbar': LayoutNavbar;
@@ -615,22 +496,16 @@ declare module '@strapi/types' {
       'sections.features': SectionsFeatures;
       'sections.heading': SectionsHeading;
       'sections.hero': SectionsHero;
-      'sections.large-video': SectionsLargeVideo;
       'sections.lead-form': SectionsLeadForm;
       'sections.localisation': SectionsLocalisation;
       'sections.photo-gallery': SectionsPhotoGallery;
-      'sections.pricing': SectionsPricing;
       'sections.reservation': SectionsReservation;
       'sections.rich-text': SectionsRichText;
-      'sections.testimonials-group': SectionsTestimonialsGroup;
       'shared.contact': SharedContact;
       'shared.map': SharedMap;
       'shared.media': SharedMedia;
-      'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
-      'shared.slider': SharedSlider;
-      'shared.video-embed': SharedVideoEmbed;
     }
   }
 }
