@@ -9,7 +9,6 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
   "dependencies": {
     "@strapi/plugin-cloud": "4.25.1",
     "@strapi/plugin-color-picker": "^4.25.1",
@@ -34,8 +33,8 @@
     "uuid": "0f95dc7c-202b-4ab2-a874-3799d23b1640"
   },
   "engines": {
-    "node": ">=18.0.0 <=20.x.x",
-    "npm": ">=6.0.0"
+    "node": ">=18.0.0 <=22.x.x",
+    "yarn": ">=4.0.0"
   },
   "license": "MIT"
 }

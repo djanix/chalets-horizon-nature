@@ -35,7 +35,7 @@ export default function Footer({
   menuLinks: Array<FooterLink>;
   legalLinks: Array<FooterLink>;
   socialLinks: Array<FooterLink>;
-  contact: {
+  contact?: {
     address: string;
     email: string;
     phone: string;
@@ -56,9 +56,9 @@ export default function Footer({
             <div className="pb-6 lg:pb-0">
               <p className="pb-1 text-lg font-medium">Contact</p>
               <ul>
-                <li>{contact.address}</li>
-                <li>Email: <a href={`mailto:${contact.email}`} className="text-natural-dark hover:text-greyFriends-dark">{contact.email}</a></li>
-                <li>Tel. : <a href={`tel:${contact.phone}`} className="text-natural-dark hover:text-greyFriends-dark">{contact.phone}</a></li>
+                <li>{contact?.address}</li>
+                <li>Email: <a href={`mailto:${contact?.email}`} className="text-natural-dark hover:text-greyFriends-dark">{contact?.email}</a></li>
+                <li>Tel. : <a href={`tel:${contact?.phone}`} className="text-natural-dark hover:text-greyFriends-dark">{contact?.phone}</a></li>
               </ul>
             </div>
 
