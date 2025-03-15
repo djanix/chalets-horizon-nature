@@ -13,14 +13,10 @@ interface Button {
 }
 
 interface Picture {
-  data: {
-    id: string;
-    attributes: {
-      url: string;
-      name: string;
-      alternativeText: string;
-    };
-  };
+  id: string;
+  url: string;
+  name: string;
+  alternativeText: string;
 }
 
 interface Hero {
@@ -38,7 +34,7 @@ export default async function Splash({params}: {
   if (!page.data?.length) return null;
   const contentSections = page.data[0].contentSections || [];
   const heroSection: Hero = contentSections.find((section: any) => section.__component === 'sections.hero');
-  const backgroundImage = getStrapiMedia(heroSection.picture.data.attributes.url);
+  const backgroundImage = getStrapiMedia(heroSection.picture.url);
 
   return (
     <div style={{'--image-url': `url(${backgroundImage})`}} className={"absolute top-0 left-0 right-0 bottom-0 bg-[image:var(--image-url)] bg-no-repeat bg-center bg-cover"}>

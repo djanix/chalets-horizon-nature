@@ -12,7 +12,6 @@ export async function fetchAPI(
       next: { revalidate: 60 },
       headers: {
         "Content-Type": "application/json",
-        "Strapi-Response-Format": 'v4',
       },
       ...options,
     };

@@ -5,14 +5,10 @@ interface Activity {
   id: string;
   title: string;
   picture: {
-    data: {
-      id: string;
-      attributes: {
-        url: string;
-        name: string;
-        alternativeText: string;
-      };
-    };
+    id: string;
+    url: string;
+    name: string;
+    alternativeText: string;
   };
   content: string;
 }
@@ -31,7 +27,7 @@ export default function ActivityList({data}: ActivityListProps) {
           <div key={index}>
             <div className={`md:flex mb-12 gap-8 ${index % 2 === 0 && 'flex-row-reverse'}`}>
               <div className="flex-1">
-                <Media data={{file: activity.picture}}/>
+                {/*<Media data={{file: activity.picture}}/>*/}
               </div>
 
               <div className="flex-1">
