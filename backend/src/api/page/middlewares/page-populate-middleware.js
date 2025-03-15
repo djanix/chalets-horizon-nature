@@ -46,7 +46,7 @@ module.exports = (config, { strapi }) => {
   // Add your own logic here.
   return async (ctx, next) => {
     ctx.query = {
-      populate: 'deep',
+      // populate: 'deep',
       filters: { slug: ctx.query.filters.slug },
       locale: ctx.query.locale,
     };

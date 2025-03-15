@@ -6042,7 +6042,7 @@ __metadata:
     react-dom: "npm:^18.0.0"
     react-router-dom: "npm:^6.0.0"
     strapi-plugin-material-symbols: "npm:^0.0.2-5"
-    strapi-plugin-populate-deep: "npm:^3.0.1"
+    strapi-v5-plugin-populate-deep: "npm:^4.0.5"
     styled-components: "npm:^6.1.15"
   languageName: unknown
   linkType: soft
@@ -13662,10 +13662,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"strapi-plugin-populate-deep@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "strapi-plugin-populate-deep@npm:3.0.1"
-  checksum: 10c0/d393cb80371a6e5c81bc60a1679053fa4ec57d663abd6ada8c6adb57074592f41ab96075237e0ce7f823163062d0b1dc9effa10c6d983216d397bdea3bc0dff1
+"strapi-v5-plugin-populate-deep@npm:^4.0.5":
+  version: 4.0.5
+  resolution: "strapi-v5-plugin-populate-deep@npm:4.0.5"
+  checksum: 10c0/31b63ec45c5931aa6d8e392c741eb2acef53ebea776b3b97647e248508ca32a3c1758c61d6f82e07658cdf373196bd94037daa1ce70eb35a58bcceb8fdd7bde3
   languageName: node
   linkType: hard
 

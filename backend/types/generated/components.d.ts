@@ -40,7 +40,7 @@ export interface ElementsFeatureColumn extends Struct.ComponentSchema {
   attributes: {
     description: Schema.Attribute.Text;
     icon: Schema.Attribute.String &
-      Schema.Attribute.CustomField<'plugin::react-icons.icon'>;
+      Schema.Attribute.CustomField<'plugin::material-symbols.icon'>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -56,7 +56,7 @@ export interface ElementsFeatureRow extends Struct.ComponentSchema {
   attributes: {
     description: Schema.Attribute.Text;
     icon: Schema.Attribute.String &
-      Schema.Attribute.CustomField<'plugin::react-icons.icon'>;
+      Schema.Attribute.CustomField<'plugin::material-symbols.icon'>;
     link: Schema.Attribute.Component<'links.link', false>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
