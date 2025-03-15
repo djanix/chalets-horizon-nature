@@ -36,7 +36,7 @@ export default async function Splash({params}: {
 }) {
   const page = await getPageBySlug('splash', params.lang);
   if (!page.data?.length) return null;
-  const contentSections = page.data[0].attributes.contentSections;
+  const contentSections = page.data[0].contentSections || [];
   const heroSection: Hero = contentSections.find((section: any) => section.__component === 'sections.hero');
   const backgroundImage = getStrapiMedia(heroSection.picture.data.attributes.url);
 

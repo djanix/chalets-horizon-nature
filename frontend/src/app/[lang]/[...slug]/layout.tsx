@@ -39,14 +39,14 @@ export default async function PageLayout({children, params}: {
   // TODO: CREATE A CUSTOM ERROR PAGE
   if (!global.data) return null;
 
-  const { notificationBanner, navbar, footer } = global.data.attributes;
+  const { notificationBanner, navbar, footer } = global.data;
 
   const navbarLogoUrl = getStrapiMedia(
-    navbar.navbarLogo.logoImg.data?.attributes.url
+    navbar.navbarLogo.logoImg.url
   );
 
   const footerLogoUrl = getStrapiMedia(
-    footer.footerLogo.logoImg.data?.attributes.url
+    footer.footerLogo.logoImg.url
   );
 
   return (

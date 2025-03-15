@@ -13,11 +13,11 @@ async function getGlobal(lang: string): Promise<any> {
   if (!token) throw new Error("The Strapi API Token environment variable is not set.");
 
   const path = `/global`;
-  const options = { headers: { Authorization: `Bearer ${token}` } };
+  const options = { headers: { Authorization: `Bearer ${token}`, "Strapi-Response-Format": 'v4' } };
 
   const urlParamsObject = {
     populate: [
-      "metadata.shareImage",
+      "metadata",
       "favicon",
     ],
     locale: lang,
