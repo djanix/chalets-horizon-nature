@@ -1,8 +1,8 @@
 module.exports = ({ env }) => ({
   seo: {
-    enabled: true,
+    enabled: false,
   },
-  'import-export-entries': {
-    enabled: true,
-  },
+  // 'import-export-entries': {
+  //   enabled: false,
+  // },
 });
