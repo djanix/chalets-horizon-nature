@@ -1,0 +1,86 @@
+name: Update App
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy-app:
+    runs-on: ubuntu-22.04
+#    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Create backend .env file
+        uses: SpicyPizza/create-envfile@v2.0
+        with:
+          directory: ./backend
+          envkey_HOST: localhost
+          envkey_PORT: 1337
+          envkey_STRAPI_URL: https://api.chaletshorizonnature.com
+          envkey_APP_KEYS: ${{ secrets.STRAPI_APP_KEYS }}
+          envkey_API_TOKEN_SALT: ${{ secrets.STRAPI_API_TOKEN_SALT }}
+          envkey_ADMIN_JWT_SECRET: ${{ secrets.STRAPI_ADMIN_JWT_SECRET }}
+          envkey_JWT_SECRET: ${{ secrets.STRAPI_JWT_SECRET }}
+          envkey_TRANSFER_TOKEN_SALT: ${{ secrets.STRAPI_TRANSFER_TOKEN_SALT }}
+          envkey_DATABASE_CLIENT: postgres
+          envkey_DATABASE_HOST: 127.0.0.1
+          envkey_DATABASE_PORT: 5432
+          envkey_DATABASE_NAME: chalets-horizon-nature
+          envkey_DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+          envkey_DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          envkey_DATABASE_SSL: false
+
+      - name: Create frontend .env file
+        uses: SpicyPizza/create-envfile@v2.0
+        with:
+          directory: ./frontend
+          envkey_NEXT_PUBLIC_STRAPI_API_TOKEN: ${{ secrets.NEXT_PUBLIC_STRAPI_API_TOKEN }}
+          envkey_NEXT_PUBLIC_PAGE_LIMIT: 6
+          envkey_NEXT_PUBLIC_STRAPI_FORM_SUBMISSION_TOKEN: ${{ secrets.STRAPI_FORM_SUBMISSION_TOKEN }}
+          envkey_NEXT_PUBLIC_STRAPI_API_URL: https://api.chaletshorizonnature.com
+          envkey_GOOGLE_MAP_API_KEY: ${{ secrets.GOOGLE_MAP_API_KEY }}
+
+      - name: Build the app backend
+        run: cd backend/ && yarn install && NODE_ENV=production yarn build
+
+      - name: Build the app frontend
+        run: cd frontend/ && yarn install && NODE_ENV=production yarn build
+
+      - name: Transfer files to Digital Ocean Server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: example.com
+          username: foo
+          password: bar
+          port: 22
+          source: "backend/*,frontend/*"
+          target: "deploy-test"
+
+
+      - name: Restart PM2
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ vars.SSH_USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: cd ~ && pm2 startOrRestart ecosystem.config.js
+
+#      - name: Deploy the app
+#        uses: digitalocean/app_action/deploy@v2
+#        with:
+#          token: ${{ secrets.YOUR_DIGITALOCEAN_ACCESS_TOKEN_VARIABLE_NAME }}
