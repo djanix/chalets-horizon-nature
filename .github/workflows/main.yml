@@ -55,31 +55,33 @@ jobs:
           envkey_NEXT_PUBLIC_STRAPI_API_URL: https://api.chaletshorizonnature.com
           envkey_GOOGLE_MAP_API_KEY: ${{ secrets.GOOGLE_MAP_API_KEY }}
 
-      - name: Build the app backend
-        run: cd backend/ && yarn install && NODE_ENV=production yarn build
+#      - name: Build the app backend
+#        run: cd backend/ && yarn install && NODE_ENV=production yarn build
 
-      - name: Build the app frontend
-        run: cd frontend/ && yarn install && NODE_ENV=production yarn build
+
+#      - name: Build the app frontend
+#        run: cd frontend/ && yarn install && NODE_ENV=production yarn build
 
       - name: Transfer files to Digital Ocean Server
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: example.com
-          username: foo
-          password: bar
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ vars.DO_SSH_USERNAME }}
+          password: ${{ secrets.DO_SSH_PASSWORD }}
           port: 22
-          source: "backend/*,frontend/*"
+#          source: "backend/*,frontend/*"
+          source: "backend/.env,frontend/.env"
           target: "deploy-test"
 
 
-      - name: Restart PM2
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ vars.SSH_USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: cd ~ && pm2 startOrRestart ecosystem.config.js
+#      - name: Restart PM2
+#        uses: appleboy/ssh-action@v1
+#        with:
+#          host: ${{ secrets.DO_HOST }}
+#          username: ${{ vars.DO_SSH_USERNAME }}
+#          password: ${{ secrets.DO_SSH_PASSWORD }}
+#          port: 22
+#          script: cd ~ && pm2 startOrRestart ecosystem.config.js
 
 #      - name: Deploy the app
 #        uses: digitalocean/app_action/deploy@v2
