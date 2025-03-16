@@ -1,7 +1,9 @@
 "use client";
+import {useCallback, useEffect, useState} from "react";
 import {getStrapiMedia} from "@/app/[lang]/utils/api-helpers";
 import {getPageBySlug} from "@/app/[lang]/utils/get-page-by-slug";
 import Hero from "@/app/[lang]/components/Hero";
+import Loader from "@/app/[lang]/components/Loader";
 
 interface Button {
   id: string;
@@ -27,14 +29,39 @@ interface Hero {
   buttons: Button[];
 }
 
-export default async function Splash({params}: {
+export default function Splash({params}: {
   readonly params: { lang: string };
 }) {
-  const page = await getPageBySlug('splash', params.lang);
-  if (!page.data?.length) return null;
-  const contentSections = page.data[0].contentSections || [];
-  const heroSection: Hero = contentSections.find((section: any) => section.__component === 'sections.hero');
-  const backgroundImage = getStrapiMedia(heroSection.picture.url);
+  const [isLoading, setLoading] = useState(true);
+  const [heroSection, setHeroSection] = useState<Hero>();
+  const [backgroundImage, setBackgroundImage] = useState<string | null>(null)
+
+  const fetchData = useCallback(async (lang: string) => {
+    setLoading(true);
+    try {
+      const page = await getPageBySlug('splash', lang);
+      if (!page.data?.length) return;
+      const contentSections =page.data[0].contentSections || [];
+      setHeroSection(contentSections.find((section: any) => section.__component === 'sections.hero'));
+
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchData(params.lang);
+  }, [fetchData, params]);
+
+  useEffect(() => {
+    if(!heroSection) return;
+    setBackgroundImage(getStrapiMedia(heroSection.picture.url))
+  }, [heroSection]);
+
+
+  if (isLoading || !heroSection) return <Loader />;
 
   return (
     <div style={{'--image-url': `url(${backgroundImage})`}} className={"absolute top-0 left-0 right-0 bottom-0 bg-[image:var(--image-url)] bg-no-repeat bg-center bg-cover"}>
