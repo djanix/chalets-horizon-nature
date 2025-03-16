@@ -28,7 +28,7 @@ jobs:
       - name: Create backend .env file
         uses: SpicyPizza/create-envfile@v2.0
         with:
-          directory: ./backend
+          directory: backend/
           envkey_HOST: localhost
           envkey_PORT: 1337
           envkey_STRAPI_URL: https://api.chaletshorizonnature.com
@@ -48,7 +48,7 @@ jobs:
       - name: Create frontend .env file
         uses: SpicyPizza/create-envfile@v2.0
         with:
-          directory: ./frontend
+          directory: frontend/
           envkey_NEXT_PUBLIC_STRAPI_API_TOKEN: ${{ secrets.NEXT_PUBLIC_STRAPI_API_TOKEN }}
           envkey_NEXT_PUBLIC_PAGE_LIMIT: 6
           envkey_NEXT_PUBLIC_STRAPI_FORM_SUBMISSION_TOKEN: ${{ secrets.STRAPI_FORM_SUBMISSION_TOKEN }}
