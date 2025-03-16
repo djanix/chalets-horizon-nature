@@ -66,7 +66,7 @@ jobs:
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.DO_HOST }}
-          username: ${{ vars.DO_SSH_USERNAME }}
+          username: ${{ secrets.DO_SSH_USERNAME }}
           password: ${{ secrets.DO_SSH_PASSWORD }}
           port: 22
 #          source: "backend/*,frontend/*"
@@ -78,7 +78,7 @@ jobs:
 #        uses: appleboy/ssh-action@v1
 #        with:
 #          host: ${{ secrets.DO_HOST }}
-#          username: ${{ vars.DO_SSH_USERNAME }}
+#          username: ${{ secrets.DO_SSH_USERNAME }}
 #          password: ${{ secrets.DO_SSH_PASSWORD }}
 #          port: 22
 #          script: cd ~ && pm2 startOrRestart ecosystem.config.js
