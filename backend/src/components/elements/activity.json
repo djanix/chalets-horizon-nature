@@ -10,16 +10,16 @@
       "type": "string",
       "required": true
     },
+    "content": {
+      "type": "richtext"
+    },
     "picture": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "allowedTypes": [
         "images"
       ]
-    },
-    "content": {
-      "type": "richtext"
     }
   }
 }

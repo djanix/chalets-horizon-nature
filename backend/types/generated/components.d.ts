@@ -8,7 +8,7 @@ export interface ElementsActivity extends Struct.ComponentSchema {
   };
   attributes: {
     content: Schema.Attribute.RichText;
-    picture: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    picture: Schema.Attribute.Media<'images', true> & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }

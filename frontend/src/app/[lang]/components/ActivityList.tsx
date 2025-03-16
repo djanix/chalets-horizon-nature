@@ -1,15 +1,17 @@
 import RichText from "./RichText";
 import Media from "./Media";
 
+interface Picture {
+  id: string;
+  url: string;
+  name: string;
+  alternativeText: string;
+}
+
 interface Activity {
   id: string;
   title: string;
-  picture: {
-    id: string;
-    url: string;
-    name: string;
-    alternativeText: string;
-  };
+  picture: Picture[];
   content: string;
 }
 
@@ -27,7 +29,7 @@ export default function ActivityList({data}: ActivityListProps) {
           <div key={index}>
             <div className={`md:flex mb-12 gap-8 ${index % 2 === 0 && 'flex-row-reverse'}`}>
               <div className="flex-1">
-                {/*<Media data={{file: activity.picture}}/>*/}
+                <Media data={activity.picture[0]}/>
               </div>
 
               <div className="flex-1">
