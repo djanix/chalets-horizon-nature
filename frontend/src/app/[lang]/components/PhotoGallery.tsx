@@ -13,27 +13,23 @@ interface MediaImage {
   hash: string;
 }
 
-interface Media {
+interface Media extends MediaImage {
   id: string;
-  attributes: MediaImage & {
-    formats: {
-      thumbnail: MediaImage,
-      small: MediaImage,
-      medium: MediaImage,
-      large: MediaImage,
-    }
+  formats: {
+    thumbnail: MediaImage,
+    small: MediaImage,
+    medium: MediaImage,
+    large: MediaImage,
   };
 }
 
 interface PhotoGalleryProps {
   data: {
-    mediaList: {
-      data: Media[];
-    }
+    mediaList: Media[];
   };
 }
 
-function Media({ attributes }: Readonly<Media>) {
+function Media(attributes: Readonly<Media>) {
   // const imageThumbnailUrl = getStrapiMedia(attributes.formats?.large?.url || attributes.url);
   const imageUrl = getStrapiMedia(attributes.url);
   return (
@@ -56,7 +52,7 @@ function Media({ attributes }: Readonly<Media>) {
 }
 
 export default function PhotoGallery({ data }: PhotoGalleryProps) {
-  const mediaList = data.mediaList.data;
+  const mediaList = data.mediaList;
   const [showFullList, setShowFullList] = useState(false);
 
   const toggleFullList = () => {

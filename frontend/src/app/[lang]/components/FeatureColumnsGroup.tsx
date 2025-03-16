@@ -1,4 +1,4 @@
-import { IconComponent } from "./Icon";
+import Icon from "./Icon";
 
 interface Feature {
   title: string;
@@ -17,7 +17,7 @@ function Feature({ title, description, icon }: Readonly<Feature>) {
   return (
     <div className="flex flex-row items-center pr-8">
       <div className="flex items-center">
-        {icon && <IconComponent icon={icon} size={24}/>}
+        {icon && <Icon icon={icon} size={24}/>}
       </div>
       <div className="flex items-center">
         <p className="px-3 text-lg">{title}</p>

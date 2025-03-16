@@ -17,7 +17,7 @@
     },
     "icon": {
       "type": "customField",
-      "customField": "plugin::react-icons.icon"
+      "customField": "plugin::material-symbols.icon"
     }
   }
 }

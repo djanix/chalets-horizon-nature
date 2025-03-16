@@ -17,7 +17,7 @@ async function getGlobal(lang: string): Promise<any> {
 
   const urlParamsObject = {
     populate: [
-      "metadata.shareImage",
+      "metadata",
       "favicon",
     ],
     locale: lang,
@@ -30,14 +30,13 @@ export async function generateMetadata({ params } : { params: {lang: string}}): 
 
   if (!meta.data) return FALLBACK_SEO;
 
-  const { metadata, favicon } = meta.data.attributes;
-  const { url } = favicon.data.attributes;
+  const { metadata, favicon } = meta.data;
 
   return {
     title: metadata.metaTitle,
     description: metadata.metaDescription,
     icons: {
-      icon: [new URL(url, getStrapiURL())],
+      icon: [new URL(favicon.url, getStrapiURL())],
     },
   };
 }

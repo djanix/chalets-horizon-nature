@@ -15,17 +15,7 @@ async function getGlobal(lang: string): Promise<any> {
   const options = { headers: { Authorization: `Bearer ${token}` } };
 
   const urlParamsObject = {
-    populate: [
-      "notificationBanner.link",
-      "navbar.links",
-      "navbar.button",
-      "navbar.navbarLogo.logoImg",
-      "footer.footerLogo.logoImg",
-      "footer.menuLinks",
-      "footer.legalLinks",
-      "footer.socialLinks",
-      "footer.contact",
-    ],
+    pLevel: 5,
     locale: lang,
   };
   return await fetchAPI(path, urlParamsObject, options);
@@ -39,14 +29,14 @@ export default async function PageLayout({children, params}: {
   // TODO: CREATE A CUSTOM ERROR PAGE
   if (!global.data) return null;
 
-  const { notificationBanner, navbar, footer } = global.data.attributes;
+  const { notificationBanner, navbar, footer } = global.data;
 
   const navbarLogoUrl = getStrapiMedia(
-    navbar.navbarLogo.logoImg.data?.attributes.url
+    navbar.navbarLogo.logoImg.url
   );
 
   const footerLogoUrl = getStrapiMedia(
-    footer.footerLogo.logoImg.data?.attributes.url
+    footer.footerLogo.logoImg.url
   );
 
   return (

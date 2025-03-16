@@ -13,6 +13,7 @@
     "@formatjs/intl-localematcher": "^0.6.0",
     "@headlessui/react": "^1.7.19",
     "@heroicons/react": "^2.2.0",
+    "@material-design-icons/font": "^0.14.15",
     "@types/negotiator": "^0.6.3",
     "@types/node": "22.13.10",
     "@types/qs": "^6.9.18",

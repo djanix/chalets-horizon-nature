@@ -4,6 +4,7 @@
 
 @import "react-slideshow-image/dist/styles.css";
 @import "react-day-picker/style.css";
+@import '@material-design-icons/font';
 
 body {
   @apply bg-natural-light;
