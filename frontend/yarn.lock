@@ -122,6 +122,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@material-design-icons/font@npm:^0.14.15":
+  version: 0.14.15
+  resolution: "@material-design-icons/font@npm:0.14.15"
+  checksum: 10c0/6914f0c1a4ca66cfe17fe8f2722e7dbb7b6009c71f5207730d837e8a2be6212b825bd725dcfc284da17e6f8fb5ceee669cdce1f7f09cb83e3e791b0bfa3fab51
+  languageName: node
+  linkType: hard
+
 "@next/env@npm:14.2.24":
   version: 14.2.24
   resolution: "@next/env@npm:14.2.24"
@@ -1005,6 +1012,7 @@ __metadata:
     "@formatjs/intl-localematcher": "npm:^0.6.0"
     "@headlessui/react": "npm:^1.7.19"
     "@heroicons/react": "npm:^2.2.0"
+    "@material-design-icons/font": "npm:^0.14.15"
     "@types/negotiator": "npm:^0.6.3"
     "@types/node": "npm:22.13.10"
     "@types/qs": "npm:^6.9.18"
