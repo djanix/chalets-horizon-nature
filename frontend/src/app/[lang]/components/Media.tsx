@@ -6,8 +6,6 @@ interface MediaProps {
   url: string;
   name: string;
   alternativeText: string;
-  width: number;
-  height: number;
 }
 
 export default function Media({ data }: { data: MediaProps }) {
