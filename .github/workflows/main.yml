@@ -67,7 +67,8 @@ jobs:
         with:
           host: ${{ secrets.DO_HOST }}
           username: ${{ secrets.DO_SSH_USERNAME }}
-          password: ${{ secrets.DO_SSH_PASSWORD }}
+          key: ${{ secrets.DO_SSH_KEY }}
+#          password: ${{ secrets.DO_SSH_PASSWORD }}
           port: 22
 #          source: "backend/*,frontend/*"
           source: "backend/.env,frontend/.env"
@@ -79,7 +80,8 @@ jobs:
 #        with:
 #          host: ${{ secrets.DO_HOST }}
 #          username: ${{ secrets.DO_SSH_USERNAME }}
-#          password: ${{ secrets.DO_SSH_PASSWORD }}
+#          key: ${{ secrets.DO_SSH_KEY }}
+##          password: ${{ secrets.DO_SSH_PASSWORD }}
 #          port: 22
 #          script: cd ~ && pm2 startOrRestart ecosystem.config.js
 
