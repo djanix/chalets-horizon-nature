@@ -11,6 +11,7 @@ jobs:
   deploy-app:
     runs-on: ubuntu-22.04
 #    runs-on: self-hosted
+    environment: production
 
     steps:
       - name: Checkout repository
@@ -20,10 +21,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: corepack enable
 
       - name: Install dependencies
-        run: yarn install
+        run: corepack enable && yarn install
 
       - name: Create backend .env file
         uses: SpicyPizza/create-envfile@v2.0
