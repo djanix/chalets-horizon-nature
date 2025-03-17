@@ -55,12 +55,23 @@ jobs:
           envkey_NEXT_PUBLIC_STRAPI_API_URL: https://api.chaletshorizonnature.com
           envkey_GOOGLE_MAP_API_KEY: ${{ secrets.GOOGLE_MAP_API_KEY }}
 
-#      - name: Build the app backend
-#        run: cd backend/ && yarn install && NODE_ENV=production yarn build
+      - name: Build the app backend
+        run: cd backend/ && yarn install && NODE_ENV=production yarn build
 
+      - name: Build the app frontend
+        run: cd frontend/ && yarn install && NODE_ENV=production yarn build
 
-#      - name: Build the app frontend
-#        run: cd frontend/ && yarn install && NODE_ENV=production yarn build
+      - name: Zip backend files
+        uses: vimtor/action-zip@v1.2
+        with:
+          files: backend/build/ backend/.env
+          dest: backend.zip
+
+      - name: Zip frontend files
+        uses: vimtor/action-zip@v1.2
+        with:
+          files: frontend/.next/ frontend/.env
+          dest: frontend.zip
 
       - name: Transfer files to Digital Ocean Server
         uses: appleboy/scp-action@v0.1.7
@@ -68,10 +79,8 @@ jobs:
           host: ${{ secrets.DO_HOST }}
           username: ${{ secrets.DO_SSH_USERNAME }}
           key: ${{ secrets.DO_SSH_KEY }}
-#          password: ${{ secrets.DO_SSH_PASSWORD }}
           port: 22
-#          source: "backend/*,frontend/*"
-          source: "backend/.env,frontend/.env"
+          source: "backend.zip,frontend.zip"
           target: "deploy-test"
 
 
