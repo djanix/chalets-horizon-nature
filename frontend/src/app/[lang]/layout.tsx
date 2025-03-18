@@ -28,7 +28,7 @@ async function getGlobal(lang: string): Promise<any> {
 export async function generateMetadata({ params } : { params: {lang: string}}): Promise<Metadata> {
   const meta = await getGlobal(params.lang);
 
-  if (!meta.data) return FALLBACK_SEO;
+  if (!meta.data?.metaTitle) return FALLBACK_SEO;
 
   const { metadata, favicon } = meta.data;
 

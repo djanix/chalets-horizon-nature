@@ -1,4 +1,4 @@
 export const FALLBACK_SEO = {
-    title: "Strapi Starter Next Blog",
-    description: "Strapi Starter Next Blog",
+    title: "Chalets Horizon Nature",
+    description: "Hébergements en nature offrant calme et sérénité.",
 }
