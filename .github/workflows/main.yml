@@ -92,18 +92,13 @@ jobs:
           host: ${{ secrets.DO_HOST }}
           username: ${{ secrets.DO_SSH_USERNAME }}
           key: ${{ secrets.DO_SSH_KEY }}
-#          password: ${{ secrets.DO_SSH_PASSWORD }}
           port: 22
           script: |
-#           Update repo
             git pull
             yarn install && cd ${{env.REPO_PATH}}/backend && yarn install && ${{env.REPO_PATH}}/frontend && yarn install
-#           Unzip and move files
             unzip ${{ env.BUILD_FILES_PATH }}/backend.zip -d ${{env.REPO_PATH}}/backend/build
             mv ${{env.REPO_PATH}}/backend/build/.env ${{env.REPO_PATH}}/backend/.env
             unzip ${{ env.BUILD_FILES_PATH }}/frontend.zip -d ${{env.REPO_PATH}}/frontend/.next
             mv ${{env.REPO_PATH}}/frontend/.next/.env ${{env.REPO_PATH}}/frontend/.env
-#           Restart PM2
             cd ~ && pm2 startOrRestart ecosystem.config.js
-#           Clean up
             rm -rf ${{ env.BUILD_FILES_PATH }}
