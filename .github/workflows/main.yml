@@ -62,7 +62,7 @@ jobs:
         run: cd backend/ && yarn install && NODE_ENV=production yarn build
 
       - name: Build the app frontend
-        run: cd frontend/ && yarn install && NODE_ENV=production yarn build
+        run: cd frontend/ && yarn install && yarn dev &&NODE_ENV=production yarn build
 
       - name: Zip backend files
         uses: vimtor/action-zip@v1.2
@@ -95,7 +95,7 @@ jobs:
           port: 22
           script: |
             git pull
-            yarn install && cd ${{env.REPO_PATH}}/backend && yarn install && ${{env.REPO_PATH}}/frontend && yarn install
+            yarn setup
             unzip ${{ env.BUILD_FILES_PATH }}/backend.zip -d ${{env.REPO_PATH}}/backend/build
             mv ${{env.REPO_PATH}}/backend/build/.env ${{env.REPO_PATH}}/backend/.env
             unzip ${{ env.BUILD_FILES_PATH }}/frontend.zip -d ${{env.REPO_PATH}}/frontend/.next
