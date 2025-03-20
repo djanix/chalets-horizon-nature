@@ -7,10 +7,13 @@ on:
 permissions:
   contents: read
 
+env:
+  REPO_PATH: /home/jbeauchemin/chalets-horizon-nature
+  BUILD_FILES_PATH: /home/jbeauchemin/deploy-build-files
+
 jobs:
   deploy-app:
     runs-on: ubuntu-22.04
-#    runs-on: self-hosted
     environment: production
 
     steps:
@@ -81,20 +84,26 @@ jobs:
           key: ${{ secrets.DO_SSH_KEY }}
           port: 22
           source: "backend.zip,frontend.zip"
-          target: "deploy-test"
+          target: ${{ env.BUILD_FILES_PATH }}
 
-
-#      - name: Restart PM2
-#        uses: appleboy/ssh-action@v1
-#        with:
-#          host: ${{ secrets.DO_HOST }}
-#          username: ${{ secrets.DO_SSH_USERNAME }}
-#          key: ${{ secrets.DO_SSH_KEY }}
-##          password: ${{ secrets.DO_SSH_PASSWORD }}
-#          port: 22
-#          script: cd ~ && pm2 startOrRestart ecosystem.config.js
-
-#      - name: Deploy the app
-#        uses: digitalocean/app_action/deploy@v2
-#        with:
-#          token: ${{ secrets.YOUR_DIGITALOCEAN_ACCESS_TOKEN_VARIABLE_NAME }}
+      - name: Setup new build
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_SSH_USERNAME }}
+          key: ${{ secrets.DO_SSH_KEY }}
+#          password: ${{ secrets.DO_SSH_PASSWORD }}
+          port: 22
+          script: |
+#           Update repo
+            git pull
+            yarn install && cd ${{env.REPO_PATH}}/backend && yarn install && ${{env.REPO_PATH}}/frontend && yarn install
+#           Unzip and move files
+            unzip ${{ env.BUILD_FILES_PATH }}/backend.zip -d ${{env.REPO_PATH}}/backend/build
+            mv ${{env.REPO_PATH}}/backend/build/.env ${{env.REPO_PATH}}/backend/.env
+            unzip ${{ env.BUILD_FILES_PATH }}/frontend.zip -d ${{env.REPO_PATH}}/frontend/.next
+            mv ${{env.REPO_PATH}}/frontend/.next/.env ${{env.REPO_PATH}}/frontend/.env
+#           Restart PM2
+            cd ~ && pm2 startOrRestart ecosystem.config.js
+#           Clean up
+            rm -rf ${{ env.BUILD_FILES_PATH }}
