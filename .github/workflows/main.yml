@@ -59,10 +59,16 @@ jobs:
           envkey_GOOGLE_MAP_API_KEY: ${{ secrets.GOOGLE_MAP_API_KEY }}
 
       - name: Build the app backend
-        run: cd backend/ && yarn install && NODE_ENV=production yarn build
+        run: |
+          cd backend/
+          yarn install
+          NODE_ENV=production yarn build
 
       - name: Build the app frontend
-        run: cd frontend/ && yarn install && yarn dev &&NODE_ENV=production yarn build
+        run: |
+          cd frontend/
+          yarn install
+          NODE_ENV=production yarn build
 
       - name: Zip backend files
         uses: vimtor/action-zip@v1.2
