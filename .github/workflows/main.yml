@@ -101,8 +101,7 @@ jobs:
           key: ${{ secrets.DO_SSH_KEY }}
           port: 22
           script: |
-            git pull
-            yarn setup
+            cd ${{env.REPO_PATH}} && git pull && yarn setup
             unzip ${{ env.BUILD_FILES_PATH }}/backend.zip -d ${{env.REPO_PATH}}/backend/build
             mv ${{env.REPO_PATH}}/backend/build/.env ${{env.REPO_PATH}}/backend/.env
             unzip ${{ env.BUILD_FILES_PATH }}/frontend.zip -d ${{env.REPO_PATH}}/frontend/.next
