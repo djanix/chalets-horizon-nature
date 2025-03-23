@@ -105,9 +105,9 @@ jobs:
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
             cd ${{env.REPO_PATH}} && yarn setup
-            unzip ${{ env.BUILD_FILES_PATH }}/backend.zip -d ${{env.REPO_PATH}}/backend/build
+            unzip -o ${{ env.BUILD_FILES_PATH }}/backend.zip -d ${{env.REPO_PATH}}/backend/build
             mv -f ${{env.REPO_PATH}}/backend/build/.env ${{env.REPO_PATH}}/backend/.env
-            unzip ${{ env.BUILD_FILES_PATH }}/frontend.zip -d ${{env.REPO_PATH}}/frontend/.next
+            unzip -o ${{ env.BUILD_FILES_PATH }}/frontend.zip -d ${{env.REPO_PATH}}/frontend/.next
             mv -f ${{env.REPO_PATH}}/frontend/.next/.env ${{env.REPO_PATH}}/frontend/.env
             cd ${{env.REPO_PATH}}/frontend && NODE_ENV=production yarn build
             cd ~ && pm2 startOrRestart ecosystem.config.js
