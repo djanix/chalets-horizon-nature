@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'backend',
-      cwd: './backend',
+      cwd: '/home/jbeauchemin/chalets-horizon-nature/backend',
       script: 'yarn',
       args: 'start',
       env: {
@@ -11,7 +11,7 @@ module.exports = {
     },
     {
       name: 'frontend',
-      cwd: './frontend',
+      cwd: '/home/jbeauchemin/chalets-horizon-nature/frontend',
       script: 'yarn',
       args: 'start',
       env: {

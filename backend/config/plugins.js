@@ -8,7 +8,7 @@ module.exports = ({ env }) => ({
   'strapi-v5-plugin-populate-deep': {
     enabled: true,
   },
-  // 'import-export-entries': {
-  //   enabled: false,
-  // },
+  'import-export-entries': {
+    enabled: false,
+  },
 });
