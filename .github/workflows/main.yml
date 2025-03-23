@@ -110,5 +110,5 @@ jobs:
             unzip -o ${{ env.BUILD_FILES_PATH }}/frontend.zip -d ${{env.REPO_PATH}}/frontend/.next
             mv -f ${{env.REPO_PATH}}/frontend/.next/.env ${{env.REPO_PATH}}/frontend/.env
             cd ${{env.REPO_PATH}}/frontend && NODE_ENV=production yarn build
-            cd ~ && pm2 startOrRestart ecosystem.config.js
+            cd ${{env.REPO_PATH}} && pm2 startOrRestart ecosystem.config.js
             rm -rf ${{ env.BUILD_FILES_PATH }}
