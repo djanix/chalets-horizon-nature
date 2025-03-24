@@ -10,20 +10,20 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.11.2",
-    "@strapi/plugin-color-picker": "^5.11.2",
+    "@strapi/plugin-cloud": "5.11.3",
+    "@strapi/plugin-color-picker": "^5.11.3",
     "@strapi/plugin-seo": "^2.0.8",
-    "@strapi/plugin-users-permissions": "5.11.2",
-    "@strapi/strapi": "5.11.2",
-    "better-sqlite3": "11.9.0",
-    "pg": "8.14.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router-dom": "^6.0.0",
+    "@strapi/plugin-users-permissions": "5.11.3",
+    "@strapi/strapi": "5.11.3",
+    "better-sqlite3": "11.9.1",
+    "pg": "8.14.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.0",
     "strapi-import-export": "^0.0.1",
     "strapi-plugin-material-symbols": "^0.0.2-5",
     "strapi-v5-plugin-populate-deep": "^4.0.5",
-    "styled-components": "^6.1.15"
+    "styled-components": "^6.1.16"
   },
   "author": {
     "name": "A Strapi developer"
