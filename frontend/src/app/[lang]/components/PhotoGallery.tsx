@@ -1,8 +1,8 @@
-"use client";
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import { getStrapiMedia } from "../utils/api-helpers";
-import { Squares2X2Icon } from "@heroicons/react/24/outline";
+'use client';
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { getStrapiMedia } from '../utils/api-helpers';
+import { Squares2X2Icon } from '@heroicons/react/24/outline';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
 
@@ -16,10 +16,10 @@ interface MediaImage {
 interface Media extends MediaImage {
   id: string;
   formats: {
-    thumbnail: MediaImage,
-    small: MediaImage,
-    medium: MediaImage,
-    large: MediaImage,
+    thumbnail: MediaImage;
+    small: MediaImage;
+    medium: MediaImage;
+    large: MediaImage;
   };
 }
 
@@ -34,19 +34,14 @@ function Media(attributes: Readonly<Media>) {
   const imageUrl = getStrapiMedia(attributes.url);
   return (
     <a
-      href={imageUrl ?? ""}
+      href={imageUrl ?? ''}
       data-pswp-width={attributes.width}
       data-pswp-height={attributes.height}
       data-cropped="true"
       target="_blank"
       rel="noreferrer"
     >
-      <Image
-        src={imageUrl ?? ""}
-        alt=""
-        className="object-cover"
-        fill
-      />
+      <Image src={imageUrl ?? ''} alt="" className="object-cover" fill />
     </a>
   );
 }
@@ -95,9 +90,12 @@ export default function PhotoGallery({ data }: PhotoGalleryProps) {
         </div>
 
         <div className="absolute right-10 bottom-4">
-          <button onClick={toggleFullList} className="text-greyFriends border-2 border-greyFriends bg-natural-light px-2 py-1 align-bottom">
+          <button
+            onClick={toggleFullList}
+            className="text-greyFriends border-2 border-greyFriends bg-natural-light px-2 py-1 align-bottom"
+          >
             <Squares2X2Icon className="h-7 w-7 text-greyFriends inline-block mr-1" aria-hidden="true" />
-            {showFullList ? "Cacher les photos supplémentaires" : "Afficher toutes les photos"}
+            {showFullList ? 'Cacher les photos supplémentaires' : 'Afficher toutes les photos'}
           </button>
         </div>
       </div>

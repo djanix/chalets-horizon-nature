@@ -3,6 +3,6 @@ interface IconProps {
   size?: number;
 }
 
-export default function Icon({ icon, size }: IconProps) {;
-  return <span className={size ? `material-icons-outlined text-[${size}px]` : 'material-icons-outlined'}>{icon}</span>
-};
+export default function Icon({ icon, size }: IconProps) {
+  return <span className={size ? `material-icons-outlined text-[${size}px]` : 'material-icons-outlined'}>{icon}</span>;
+}

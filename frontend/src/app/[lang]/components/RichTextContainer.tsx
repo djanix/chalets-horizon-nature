@@ -1,6 +1,6 @@
-import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import RichText from "@/app/[lang]/components/RichText";
+import Markdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import RichText from '@/app/[lang]/components/RichText';
 
 interface RichTextContainerProps {
   data: {

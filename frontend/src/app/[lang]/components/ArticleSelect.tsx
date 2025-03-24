@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 interface Category {
   id: number;
@@ -21,8 +21,8 @@ interface Article {
 
 function selectedFilter(current: string, selected: string) {
   return current === selected
-    ? "px-3 py-1 rounded-lg hover:underline dark:bg-violet-700 dark:text-gray-100"
-    : "px-3 py-1 rounded-lg hover:underline dark:bg-violet-400 dark:text-gray-900";
+    ? 'px-3 py-1 rounded-lg hover:underline dark:bg-violet-700 dark:text-gray-100'
+    : 'px-3 py-1 rounded-lg hover:underline dark:bg-violet-400 dark:text-gray-900';
 }
 
 export default function ArticleSelect({
@@ -37,7 +37,6 @@ export default function ArticleSelect({
     category: string;
   };
 }) {
-
   return (
     <div className="p-4 rounded-lg dark:bg-gray-900 min-h-[365px] relative">
       <h4 className="text-xl font-semibold">Browse By Category</h4>
@@ -49,16 +48,13 @@ export default function ArticleSelect({
             return (
               <Link
                 href={`/blog/${category.attributes.slug}`}
-                className={selectedFilter(
-                  category.attributes.slug,
-                  params.category
-                )}
+                className={selectedFilter(category.attributes.slug, params.category)}
               >
                 #{category.attributes.name}
               </Link>
             );
           })}
-          <Link href={"/blog"} className={selectedFilter("", "filter")}>
+          <Link href={'/blog'} className={selectedFilter('', 'filter')}>
             #all
           </Link>
         </div>
@@ -73,8 +69,7 @@ export default function ArticleSelect({
                     rel="noopener noreferrer"
                     href={`/blog/${params.category}/${article.attributes.slug}`}
                     className={`${
-                      params.slug === article.attributes.slug &&
-                      "text-violet-400"
+                      params.slug === article.attributes.slug && 'text-violet-400'
                     }  hover:underline hover:text-violet-400 transition-colors duration-200`}
                   >
                     {article.attributes.title}

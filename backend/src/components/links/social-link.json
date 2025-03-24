@@ -12,10 +12,7 @@
     },
     "social": {
       "type": "enumeration",
-      "enum": [
-        "Facebook",
-        "Instagram"
-      ]
+      "enum": ["Facebook", "Instagram"]
     },
     "color": {
       "type": "customField",

@@ -64,11 +64,11 @@ jobs:
           yarn install
           NODE_ENV=production yarn build
 
-#      - name: Build the app frontend
-#        run: |
-#          cd frontend/
-#          yarn install
-#          NODE_ENV=production yarn build
+      #- name: Build the app frontend
+      #  run: |
+      #    cd frontend/
+      #    yarn install
+      #    NODE_ENV=production yarn build
 
       - name: Zip backend files
         uses: vimtor/action-zip@v1.2
@@ -80,7 +80,7 @@ jobs:
         uses: vimtor/action-zip@v1.2
         with:
           files: frontend/.env
-#          files: frontend/.next/ frontend/.env
+          #  files: frontend/.next/ frontend/.env
           dest: frontend.zip
 
       - name: Transfer files to Digital Ocean Server
@@ -90,7 +90,7 @@ jobs:
           username: ${{ secrets.DO_SSH_USERNAME }}
           key: ${{ secrets.DO_SSH_KEY }}
           port: 22
-          source: "backend.zip,frontend.zip"
+          source: 'backend.zip,frontend.zip'
           target: ${{ env.BUILD_FILES_PATH }}
 
       - name: Setup new build
