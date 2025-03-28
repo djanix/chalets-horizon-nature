@@ -25,7 +25,7 @@ function RenderSocialIcon({ social }: { social: string | undefined }) {
 export default function Footer({
   logoUrl,
   logoText,
-  menuLinks,
+  // menuLinks,
   legalLinks,
   socialLinks,
   contact,

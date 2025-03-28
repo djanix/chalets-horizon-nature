@@ -21,7 +21,7 @@ export default function Localisation({ data }: LocalisationProps) {
   // const [infoWindowOpen, setInfoWindowOpen] = useState(true);
   // const [markerRef, marker] = useAdvancedMarkerRef();
 
-  const [markerLocation, setMarkerLocation] = useState({
+  const [markerLocation] = useState({
     lat: 46.26914,
     lng: -73.75621,
   });

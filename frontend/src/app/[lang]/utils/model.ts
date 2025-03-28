@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 type StrapiResponse<T> = {
   data: T;
   message: string;
@@ -5,8 +6,8 @@ type StrapiResponse<T> = {
 
 export interface Attribute {
   url: string;
-  alternativeText?: any;
-  caption?: any;
+  alternativeText?: string;
+  caption?: string;
   width: number;
   height: number;
 }
@@ -44,8 +45,8 @@ export interface Attribute {
   updatedAt: string;
   publishedAt: string;
   locale: string;
-  heading?: any;
-  description?: any;
+  heading?: string;
+  description?: string;
   contentSections: ContentSection[];
 }
 

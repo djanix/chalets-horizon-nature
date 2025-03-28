@@ -4,6 +4,7 @@ import Quote from '../components/Quote';
 import Media from '../components/Media';
 import VideoEmbed from '../components/VideoEmbed';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function postRenderer(section: any, index: number) {
   switch (section.__component) {
     case 'shared.rich-text':

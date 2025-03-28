@@ -6,6 +6,7 @@ import { fetchAPI } from './utils/fetch-api';
 import { i18n } from '../../../i18n-config';
 import { FALLBACK_SEO } from '@/app/[lang]/utils/constants';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function getGlobal(lang: string): Promise<any> {
   const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 

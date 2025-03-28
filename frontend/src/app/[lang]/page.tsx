@@ -13,8 +13,9 @@ export default async function RootRoute({ params }: { params: { lang: string } }
     if (page.data.length == 0 && params.lang !== 'fr') return <LangRedirect />;
     if (page.data.length === 0) return null;
     const contentSections = page.data[0].contentSections || [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return contentSections.map((section: any, index: number) => sectionRenderer(section, index));
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Missing or invalid credentials', error);
   }
 }

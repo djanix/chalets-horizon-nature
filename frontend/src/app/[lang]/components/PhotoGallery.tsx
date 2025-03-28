@@ -65,7 +65,7 @@ export default function PhotoGallery({ data }: PhotoGalleryProps) {
 
     return () => {
       lightbox.destroy();
-      //@ts-expect-error
+      //@ts-expect-error as we destroy the lightbox
       lightbox = null;
     };
   }, [mediaList]);

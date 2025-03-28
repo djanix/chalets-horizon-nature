@@ -7,7 +7,7 @@ interface HighlightedTextProps {
 
 export default function HighlightedText({ text, tag, className, color }: HighlightedTextProps) {
   const tempText = text.split(' ');
-  let result = [];
+  const result = [];
 
   result.push(`<${tag} class="${className ? className : ''}">`);
 

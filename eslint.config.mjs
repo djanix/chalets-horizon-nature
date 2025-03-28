@@ -18,8 +18,11 @@ export default defineConfig([
       },
     },
   }),
-  { files: ['**/*.{js,jsx,ts,tsx,mjs,cjs}'] },
   { files: ['**/*.{js,jsx,ts,tsx,mjs,cjs}'], languageOptions: { globals: { ...globals.browser, ...globals.node } } },
   { files: ['**/*.{js,jsx,ts,tsx,mjs,cjs}'], plugins: { js }, extends: ['js/recommended'] },
   tseslint.configs.recommended,
+  {
+    files: ['backend/**/*.{js,jsx,ts,tsx,mjs,cjs}'],
+    rules: { '@typescript-eslint/no-require-imports': 'off' },
+  },
 ]);

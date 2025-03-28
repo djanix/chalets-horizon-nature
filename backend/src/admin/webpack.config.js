@@ -2,7 +2,7 @@
 
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
-/* eslint-disable no-unused-vars */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 module.exports = (config, webpack) => {
   config.plugins.push(new MonacoWebpackPlugin());
 

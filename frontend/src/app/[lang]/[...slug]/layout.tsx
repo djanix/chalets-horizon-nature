@@ -5,6 +5,7 @@ import Banner from '../components/Banner';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function getGlobal(lang: string): Promise<any> {
   const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 

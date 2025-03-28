@@ -40,6 +40,7 @@ export default function Splash({ params }: { readonly params: { lang: string } }
       const page = await getPageBySlug('splash', lang);
       if (!page.data?.length) return;
       const contentSections = page.data[0].contentSections || [];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       setHeroSection(contentSections.find((section: any) => section.__component === 'sections.hero'));
     } catch (error) {
       console.error(error);

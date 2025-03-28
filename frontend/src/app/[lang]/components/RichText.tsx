@@ -11,7 +11,7 @@ export default function RichText({ data }: RichTextProps) {
   // TODO: STYLE THE MARKDOWN
   return (
     <div className="rich-text">
-      <Markdown children={data.body} remarkPlugins={[remarkGfm]} />
+      <Markdown remarkPlugins={[remarkGfm]}>{data.body}</Markdown>
     </div>
   );
 }

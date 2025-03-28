@@ -13,6 +13,7 @@ import RichTextContainer from '../components/RichTextContainer';
 import Availabilities from '../components/Availabilities';
 import Reservation from '../components/Reservation';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function sectionRenderer(section: any, index: number) {
   switch (section.__component) {
     case 'sections.heading':
