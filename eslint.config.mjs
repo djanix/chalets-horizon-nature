@@ -11,7 +11,7 @@ const compat = new FlatCompat({
 export default defineConfig([
   ...compat.config({
     extends: ['next', 'next/core-web-vitals', 'next/typescript', 'prettier'],
-    ignorePatterns: ['.next/**'],
+    ignorePatterns: ['.next/**', '**/*.d.ts'],
     settings: {
       next: {
         rootDir: 'frontend/',
