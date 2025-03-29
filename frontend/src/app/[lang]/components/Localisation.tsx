@@ -1,6 +1,6 @@
 'use client';
 // import { APIProvider, Map, AdvancedMarker, InfoWindow, useAdvancedMarkerRef } from '@vis.gl/react-google-maps';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 interface IMap {
   id: string;
@@ -21,10 +21,10 @@ export default function Localisation({ data }: LocalisationProps) {
   // const [infoWindowOpen, setInfoWindowOpen] = useState(true);
   // const [markerRef, marker] = useAdvancedMarkerRef();
 
-  const [markerLocation] = useState({
-    lat: 46.26914,
-    lng: -73.75621,
-  });
+  // const [markerLocation] = useState({
+  //   lat: 46.26914,
+  //   lng: -73.75621,
+  // });
 
   return (
     <section className="">
@@ -36,8 +36,8 @@ export default function Localisation({ data }: LocalisationProps) {
               loading="lazy"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
-              // src={`https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${data.map.address}`}>
-              src={`https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${markerLocation.lat},${markerLocation.lng}`}
+              src={`https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${data.map.address}`}
+              // src={`https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${markerLocation.lat},${markerLocation.lng}`}>
             ></iframe>
 
             {/*<APIProvider apiKey={API_KEY}>*/}
