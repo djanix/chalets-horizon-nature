@@ -57,6 +57,7 @@ jobs:
           envkey_NEXT_PUBLIC_STRAPI_FORM_SUBMISSION_TOKEN: ${{ secrets.STRAPI_FORM_SUBMISSION_TOKEN }}
           envkey_NEXT_PUBLIC_STRAPI_API_URL: https://api.chaletshorizonnature.com
           envkey_GOOGLE_MAP_API_KEY: ${{ secrets.GOOGLE_MAP_API_KEY }}
+          envkey_SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
       - name: Build the app backend
         run: |
