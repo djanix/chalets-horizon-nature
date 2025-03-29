@@ -10,7 +10,7 @@ const nextConfig = {
         destination: '/:lang/splash',
         permanent: false,
       },
-    ]
+    ];
   },
   images: {
     remotePatterns: [
@@ -28,12 +28,15 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'images.pexels.com',
-      }
+      },
     ],
   },
   env: {
     GOOGLE_MAP_API_KEY: process.env.GOOGLE_MAP_API_KEY,
   },
-}
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

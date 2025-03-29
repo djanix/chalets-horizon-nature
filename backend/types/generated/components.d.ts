@@ -39,8 +39,7 @@ export interface ElementsFeatureColumn extends Struct.ComponentSchema {
   };
   attributes: {
     description: Schema.Attribute.Text;
-    icon: Schema.Attribute.String &
-      Schema.Attribute.CustomField<'plugin::material-symbols.icon'>;
+    icon: Schema.Attribute.String & Schema.Attribute.CustomField<'plugin::material-symbols.icon'>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -55,8 +54,7 @@ export interface ElementsFeatureRow extends Struct.ComponentSchema {
   };
   attributes: {
     description: Schema.Attribute.Text;
-    icon: Schema.Attribute.String &
-      Schema.Attribute.CustomField<'plugin::material-symbols.icon'>;
+    icon: Schema.Attribute.String & Schema.Attribute.CustomField<'plugin::material-symbols.icon'>;
     link: Schema.Attribute.Component<'links.link', false>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
@@ -101,8 +99,7 @@ export interface ElementsNotificationBanner extends Struct.ComponentSchema {
     link: Schema.Attribute.Component<'links.link', false>;
     show: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     text: Schema.Attribute.Text & Schema.Attribute.Required;
-    type: Schema.Attribute.Enumeration<['alert', 'info', 'warning']> &
-      Schema.Attribute.Required;
+    type: Schema.Attribute.Enumeration<['alert', 'info', 'warning']> & Schema.Attribute.Required;
   };
 }
 
@@ -142,8 +139,7 @@ export interface LayoutLogo extends Struct.ComponentSchema {
     displayName: 'Logo';
   };
   attributes: {
-    logoImg: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Schema.Attribute.Required;
+    logoImg: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> & Schema.Attribute.Required;
     logoText: Schema.Attribute.String;
   };
 }
@@ -186,8 +182,7 @@ export interface LinksButtonLink extends Struct.ComponentSchema {
     name: 'Button-link';
   };
   attributes: {
-    color: Schema.Attribute.String &
-      Schema.Attribute.CustomField<'plugin::color-picker.color'>;
+    color: Schema.Attribute.String & Schema.Attribute.CustomField<'plugin::color-picker.color'>;
     newTab: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     text: Schema.Attribute.String;
     type: Schema.Attribute.Enumeration<['primary', 'secondary']>;
@@ -217,8 +212,7 @@ export interface LinksSocialLink extends Struct.ComponentSchema {
     displayName: 'Social Link';
   };
   attributes: {
-    color: Schema.Attribute.String &
-      Schema.Attribute.CustomField<'plugin::color-picker.color'>;
+    color: Schema.Attribute.String & Schema.Attribute.CustomField<'plugin::color-picker.color'>;
     social: Schema.Attribute.Enumeration<['Facebook', 'Instagram']>;
     url: Schema.Attribute.String & Schema.Attribute.Required;
   };

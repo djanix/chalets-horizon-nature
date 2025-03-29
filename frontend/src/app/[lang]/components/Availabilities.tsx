@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { DayPicker, getDefaultClassNames, DateRange } from "react-day-picker";
-import { useState } from "react";
+import { DayPicker, getDefaultClassNames, DateRange } from 'react-day-picker';
+import { useState } from 'react';
 
 interface AvailabilitiesProps {
   data: {
@@ -21,17 +21,17 @@ export default function Availabilities({ data }: AvailabilitiesProps) {
   const defaultClassNames = getDefaultClassNames();
   const [selected, setSelected] = useState<DateRange>();
   const dateOptions: Intl.DateTimeFormatOptions = {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric"
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
   };
 
-  const filteredDates = data.reservations.filter(reservation => {
+  const filteredDates = data.reservations.filter((reservation) => {
     return new Date(reservation.endDate) > new Date();
   });
 
-  const disabledDates = filteredDates.map(reservation => {
+  const disabledDates = filteredDates.map((reservation) => {
     // split the date into year, month, day to prevent timezone issues
     const [startYear, startMonth, startDay] = reservation.startDate.split('-');
     const [endYear, endMonth, endDay] = reservation.endDate.split('-');
@@ -55,19 +55,19 @@ export default function Availabilities({ data }: AvailabilitiesProps) {
             min={2}
             showOutsideDays
             excludeDisabled
-            disabled={[
-              { before: new Date() },
-              ...disabledDates
-            ]}
+            disabled={[{ before: new Date() }, ...disabledDates]}
             footer={
-            <div>
-              {(selected?.from && selected?.to) ?
-                <div>
-                  Arrivée: {selected.from.toLocaleDateString("fr-CA", dateOptions)}<br />
-                  Départ: {selected.to.toLocaleDateString("fr-CA", dateOptions)}
-                </div>
-              : <div>Choisissez une date.</div>}
-            </div>
+              <div>
+                {selected?.from && selected?.to ? (
+                  <div>
+                    Arrivée: {selected.from.toLocaleDateString('fr-CA', dateOptions)}
+                    <br />
+                    Départ: {selected.to.toLocaleDateString('fr-CA', dateOptions)}
+                  </div>
+                ) : (
+                  <div>Choisissez une date.</div>
+                )}
+              </div>
             }
             classNames={{
               today: `${defaultClassNames.today} font-bold`,

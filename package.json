@@ -9,11 +9,32 @@
     "dev": "yarn clear && concurrently \"cd frontend && yarn dev\" \"cd backend && yarn develop\"",
     "seed": "cd backend && yarn strapi import -f ../seed-data.tar.gz",
     "export": "cd backend && yarn strapi export --no-encrypt -f ../seed-data",
-    "repo:upstream": "git fetch upstream && git merge upstream/main"
+    "repo:upstream": "git fetch upstream && git merge upstream/main",
+    "postinstall": "husky install",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable"
   },
   "dependencies": {
     "concurrently": "^9.1.2",
     "npm-check-updates": "^17.1.16"
   },
-  "packageManager": "yarn@4.7.0"
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.23.0",
+    "eslint": "^9.23.0",
+    "eslint-config-next": "^15.2.4",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-react": "^7.37.4",
+    "globals": "^16.0.0",
+    "husky": ">=6",
+    "lint-staged": ">=10",
+    "pinst": ">=2",
+    "prettier": "3.5.3",
+    "typescript-eslint": "^8.28.0"
+  },
+  "packageManager": "yarn@4.7.0",
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,css,md}": "prettier --write",
+    "*.{js,jsx,ts,tsx,mjs,cjs}": "eslint --fix"
+  }
 }

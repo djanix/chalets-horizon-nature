@@ -1,8 +1,8 @@
-import Link from "next/link";
-import Image from "next/image";
-import HighlightedText from "./HighlightedText";
-import { getStrapiMedia } from "../utils/api-helpers";
-import { renderButtonStyle } from "../utils/render-button-style";
+import Link from 'next/link';
+import Image from 'next/image';
+import HighlightedText from './HighlightedText';
+import { getStrapiMedia } from '../utils/api-helpers';
+import { renderButtonStyle } from '../utils/render-button-style';
 
 interface Button {
   id: string;
@@ -51,13 +51,12 @@ export default function Hero({ data }: HeroProps) {
               color="dark:text-violet-400"
             />
 
-            <div
-              className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
+            <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
               {data.buttons.map((button: Button, index: number) => (
                 <Link
                   key={index}
                   href={button.url}
-                  target={button.newTab ? "_blank" : "_self"}
+                  target={button.newTab ? '_blank' : '_self'}
                   className={renderButtonStyle(button.type)}
                 >
                   {button.text}
@@ -68,16 +67,9 @@ export default function Hero({ data }: HeroProps) {
         </div>
 
         <div className="bg-greyFriends-light flex flex-1 min-h-96 relative">
-          <Image
-            src={imgUrl || ""}
-            alt={
-              data.picture.alternativeText || ""
-            }
-            className="object-cover"
-            fill
-          />
+          <Image src={imgUrl || ''} alt={data.picture.alternativeText || ''} className="object-cover" fill />
         </div>
       </div>
     </section>
-);
+  );
 }

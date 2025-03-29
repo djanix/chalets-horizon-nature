@@ -1,5 +1,5 @@
-import RichText from "./RichText";
-import Media from "./Media";
+import RichText from './RichText';
+import Media from './Media';
 
 interface Picture {
   id: string;
@@ -21,7 +21,7 @@ interface ActivityListProps {
   };
 }
 
-export default function ActivityList({data}: ActivityListProps) {
+export default function ActivityList({ data }: ActivityListProps) {
   return (
     <section className="container mx-auto">
       <div className="px-6">
@@ -29,12 +29,12 @@ export default function ActivityList({data}: ActivityListProps) {
           <div key={index}>
             <div className={`md:flex mb-12 gap-8 ${index % 2 === 0 && 'flex-row-reverse'}`}>
               <div className="flex-1">
-                <Media data={activity.picture[0]}/>
+                <Media data={activity.picture[0]} />
               </div>
 
               <div className="flex-1">
                 <h3 className="text-greyFriends-dark font-bold text-3xl mb-2">{activity.title}</h3>
-                <RichText data={{body: activity.content}}/>
+                <RichText data={{ body: activity.content }} />
               </div>
             </div>
           </div>

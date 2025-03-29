@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /**
  * `page-populate-middleware` middleware
@@ -14,6 +14,7 @@
 //   }
 // };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 module.exports = (config, { strapi }) => {
   // Add your own logic here.
   return async (ctx, next) => {

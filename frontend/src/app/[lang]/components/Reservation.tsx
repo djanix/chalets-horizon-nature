@@ -1,4 +1,4 @@
-import RichText from "@/app/[lang]/components/RichText";
+import RichText from '@/app/[lang]/components/RichText';
 
 interface ReservationProps {
   data: {
@@ -20,11 +20,11 @@ export default function Reservation({ data }: ReservationProps) {
 
         <div>
           <div className="pb-5">
-            <RichText data={{body: data.rules}} />
+            <RichText data={{ body: data.rules }} />
           </div>
 
           <div>
-            <RichText data={{body: data.cancellation}} />
+            <RichText data={{ body: data.cancellation }} />
           </div>
         </div>
       </div>

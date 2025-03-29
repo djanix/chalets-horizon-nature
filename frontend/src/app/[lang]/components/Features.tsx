@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 interface FeaturesProps {
   data: {
@@ -41,7 +41,7 @@ function Feature({ title, description, showLink, newTab, url, text }: Feature) {
         <div>
           <Link
             href={url}
-            target={newTab ? "_blank" : "_self"}
+            target={newTab ? '_blank' : '_self'}
             className="inline-block px-4 py-2 mt-4 text-sm font-semibold text-white transition duration-200 ease-in-out bg-violet-500 rounded-lg hover:bg-violet-600"
           >
             {text}
