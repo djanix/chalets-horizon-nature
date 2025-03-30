@@ -4,6 +4,7 @@
  */
 import strapiCloud from "@strapi/plugin-cloud/strapi-admin";
 import colorPicker from "@strapi/plugin-color-picker/strapi-admin";
+import sentry from "@strapi/plugin-sentry/strapi-admin";
 import seo from "@strapi/plugin-seo/strapi-admin";
 import usersPermissions from "@strapi/plugin-users-permissions/strapi-admin";
 import strapiImportExport from "strapi-import-export/strapi-admin";
@@ -14,6 +15,7 @@ renderAdmin(document.getElementById("strapi"), {
   plugins: {
     "strapi-cloud": strapiCloud,
     "color-picker": colorPicker,
+    sentry: sentry,
     seo: seo,
     "users-permissions": usersPermissions,
     "strapi-import-export": strapiImportExport,

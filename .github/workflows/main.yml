@@ -41,6 +41,7 @@ jobs:
           envkey_JWT_SECRET: ${{ secrets.STRAPI_JWT_SECRET }}
           envkey_TRANSFER_TOKEN_SALT: ${{ secrets.STRAPI_TRANSFER_TOKEN_SALT }}
           envkey_STRAPI_PLUGIN_I18N_INIT_LOCALE_CODE: fr
+          envkey_SENTRY_DSN: ${{ secrets.SENTRY_DSN_BACKEND }}
           envkey_DATABASE_CLIENT: postgres
           envkey_DATABASE_HOST: 127.0.0.1
           envkey_DATABASE_PORT: 5432
@@ -59,6 +60,7 @@ jobs:
           envkey_NEXT_PUBLIC_STRAPI_API_URL: https://api.chaletshorizonnature.com
           envkey_GOOGLE_MAP_API_KEY: ${{ secrets.GOOGLE_MAP_API_KEY }}
           envkey_SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          envkey_SENTRY_DSN: ${{ secrets.SENTRY_DSN_FRONTEND }}
 
       - name: Build the app backend
         run: |
