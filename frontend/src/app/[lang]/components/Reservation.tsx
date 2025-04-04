@@ -1,4 +1,7 @@
+'use client';
+
 import RichText from '@/app/[lang]/components/RichText';
+import { useReservationStore } from '@/app/store/reservation';
 
 interface ReservationProps {
   data: {
@@ -10,6 +13,9 @@ interface ReservationProps {
 }
 
 export default function Reservation({ data }: ReservationProps) {
+  const startDate = useReservationStore((state) => state.startDate);
+  const endDate = useReservationStore((state) => state.endDate);
+
   return (
     <section>
       <div className="container flex flex-col justify-center mx-auto lg:flex-row lg:justify-between px-6">
@@ -23,7 +29,7 @@ export default function Reservation({ data }: ReservationProps) {
                 <label htmlFor="startDate" className="block text-sm font-medium text-gray-700">
                   Arrivée
                 </label>
-                <input id="startDate" type="date" required />
+                <input id="startDate" type="date" required value={startDate?.toISOString().substring(0, 10)} disabled />
               </div>
 
               <div>au</div>
@@ -32,7 +38,7 @@ export default function Reservation({ data }: ReservationProps) {
                 <label htmlFor="endDate" className="block text-sm font-medium text-gray-700">
                   Départ
                 </label>
-                <input id="endDate" type="date" required />
+                <input id="endDate" type="date" required value={endDate?.toISOString().substring(0, 10)} disabled />
               </div>
             </div>
 

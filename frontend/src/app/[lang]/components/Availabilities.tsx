@@ -1,7 +1,7 @@
 'use client';
 
-import { DayPicker, getDefaultClassNames, DateRange } from 'react-day-picker';
-import { useState } from 'react';
+import { DayPicker, getDefaultClassNames } from 'react-day-picker';
+import { useReservationStore } from '@/app/store/reservation';
 
 interface AvailabilitiesProps {
   data: {
@@ -19,7 +19,10 @@ interface Reservation {
 
 export default function Availabilities({ data }: AvailabilitiesProps) {
   const defaultClassNames = getDefaultClassNames();
-  const [selected, setSelected] = useState<DateRange>();
+  const startDate = useReservationStore((state) => state.startDate);
+  const endDate = useReservationStore((state) => state.endDate);
+  const setStartDate = useReservationStore((state) => state.setStartDate);
+  const setEndDate = useReservationStore((state) => state.setEndDate);
   const dateOptions: Intl.DateTimeFormatOptions = {
     weekday: 'long',
     day: 'numeric',
@@ -36,10 +39,15 @@ export default function Availabilities({ data }: AvailabilitiesProps) {
     const [startYear, startMonth, startDay] = reservation.startDate.split('-');
     const [endYear, endMonth, endDay] = reservation.endDate.split('-');
 
-    const startDate = new Date(Number(startYear), Number(startMonth) - 1, Number(startDay));
-    const endDate = new Date(Number(endYear), Number(endMonth) - 1, Number(endDay) - 1);
-    return { from: startDate, to: endDate };
+    const from = new Date(Number(startYear), Number(startMonth) - 1, Number(startDay));
+    const to = new Date(Number(endYear), Number(endMonth) - 1, Number(endDay) - 1);
+    return { from, to };
   });
+
+  function selectDates(from: Date | undefined, to: Date | undefined) {
+    if (from) setStartDate(from);
+    if (to) setEndDate(to);
+  }
 
   return (
     <section>
@@ -50,19 +58,21 @@ export default function Availabilities({ data }: AvailabilitiesProps) {
         <div className="flex items-center justify-center p-6 mt-8 lg:mt-0">
           <DayPicker
             mode="range"
-            selected={selected}
-            onSelect={setSelected}
+            selected={{ from: startDate, to: endDate }}
+            onSelect={(selected) => {
+              selectDates(selected?.from, selected?.to);
+            }}
             min={2}
             showOutsideDays
             excludeDisabled
             disabled={[{ before: new Date() }, ...disabledDates]}
             footer={
               <div>
-                {selected?.from && selected?.to ? (
+                {startDate && endDate ? (
                   <div>
-                    Arrivée: {selected.from.toLocaleDateString('fr-CA', dateOptions)}
+                    Arrivée: {startDate.toLocaleDateString('fr-CA', dateOptions)}
                     <br />
-                    Départ: {selected.to.toLocaleDateString('fr-CA', dateOptions)}
+                    Départ: {endDate.toLocaleDateString('fr-CA', dateOptions)}
                   </div>
                 ) : (
                   <div>Choisissez une date.</div>
