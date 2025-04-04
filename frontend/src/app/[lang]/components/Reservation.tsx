@@ -16,7 +16,7 @@ export default function Reservation({ data }: ReservationProps) {
         <div className="flex flex-col justify-center pb-6 text-center rounded-lg lg:max-w-md xl:max-w-lg lg:text-left">
           {/*<h3 className="text-xl font-bold">Réservation à venir.</h3>*/}
 
-          <form className="space-y-6">
+          <form className="space-y-6 group">
             <h3 className="text-xl font-bold">Dates</h3>
             <div className="flex flex-col lg:flex-row gap-4 items-end">
               <div className="flex-1">
@@ -127,7 +127,7 @@ export default function Reservation({ data }: ReservationProps) {
 
             <button
               type="submit"
-              className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-greyFriends hover:bg-greyFriends focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-greyFriends group-invalid:pointer-events-none group-invalid:opacity-30"
             >
               Soumettre la demande de réservation
             </button>

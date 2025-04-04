@@ -12,7 +12,7 @@ body {
 
 @layer base {
   input, textarea, select {
-    @apply p-2.5 mt-1 block w-full border sm:text-sm border-gray-300 bg-white rounded-md shadow-sm focus:outline-1 focus:border-greyFriends focus:outline focus:outline-greyFriends;
+    @apply p-2.5 mt-1 block w-full border sm:text-sm border-gray-300 bg-white rounded-md shadow-sm focus:outline-1 focus:border-greyFriends focus:outline focus:outline-greyFriends invalid:[&:not(:focus)]:border-red-700 invalid:[&:not(:focus)]:outline-red-700;
   }
 }
 
