@@ -1,0 +1,73 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reservation_form_submissions",
+  "info": {
+    "singularName": "reservation-form-submission",
+    "pluralName": "reservation-form-submissions",
+    "displayName": "Reservation form submission",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "startDate": {
+      "type": "date",
+      "required": true
+    },
+    "endDate": {
+      "type": "date",
+      "required": true
+    },
+    "adults": {
+      "type": "integer",
+      "default": 1,
+      "required": true,
+      "min": 1,
+      "max": 10
+    },
+    "kids": {
+      "type": "integer",
+      "required": true,
+      "default": 0,
+      "max": 10,
+      "min": 0
+    },
+    "pets": {
+      "type": "integer",
+      "default": 0,
+      "max": 10,
+      "min": 0,
+      "required": true
+    },
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "message": {
+      "type": "text"
+    },
+    "reservationStatus": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "accepted",
+        "declined"
+      ],
+      "default": "pending",
+      "required": true
+    }
+  }
+}
