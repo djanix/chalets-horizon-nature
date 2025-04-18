@@ -31,18 +31,50 @@ export default function Reservation({ data }: ReservationProps) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const token = process.env.NEXT_PUBLIC_STRAPI_FORM_SUBMISSION_TOKEN;
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  function formValidation() {
+    if (!startDate) {
+      setErrorMessage('Start date cannot be blank.');
+      return false;
+    }
 
-    if (email === '') {
+    if (!endDate) {
+      setErrorMessage('End date cannot be blank.');
+      return false;
+    }
+
+    if (!email) {
       setErrorMessage('Email cannot be blank.');
-      return;
+      return false;
     }
 
     if (!emailRegex.test(email)) {
       setErrorMessage('Invalid email format.');
-      return;
+      return false;
     }
+
+    if (!firstName) {
+      setErrorMessage('First name cannot be blank.');
+      return false;
+    }
+
+    if (!lastName) {
+      setErrorMessage('Last name cannot be blank.');
+      return false;
+    }
+
+    if (!phone) {
+      setErrorMessage('Phone number cannot be blank.');
+      return false;
+    }
+
+    return true;
+  }
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    const isValid = formValidation();
+    if (!isValid) return;
 
     const res = await fetch(getStrapiURL() + '/api/reservation-form-submissions', {
       method: 'POST',
@@ -97,7 +129,7 @@ export default function Reservation({ data }: ReservationProps) {
                   Adultes
                 </label>
                 <select id="adults" required value={adults} onChange={(e) => setAdults(Number(e.target.value))}>
-                  {[...Array(5).keys()].map((num) => (
+                  {[...Array(11).keys()].map((num) => (
                     <option key={num}>{num}</option>
                   ))}
                 </select>
@@ -108,7 +140,7 @@ export default function Reservation({ data }: ReservationProps) {
                   Enfants
                 </label>
                 <select id="kids" required value={kids} onChange={(e) => setKids(Number(e.target.value))}>
-                  {[...Array(5).keys()].map((num) => (
+                  {[...Array(11).keys()].map((num) => (
                     <option key={num}>{num}</option>
                   ))}
                 </select>
@@ -119,7 +151,7 @@ export default function Reservation({ data }: ReservationProps) {
                   Animaux
                 </label>
                 <select id="pets" required value={pets} onChange={(e) => setPets(Number(e.target.value))}>
-                  {[...Array(5).keys()].map((num) => (
+                  {[...Array(11).keys()].map((num) => (
                     <option key={num}>{num}</option>
                   ))}
                 </select>
