@@ -10,7 +10,13 @@ body {
   @apply bg-natural-light;
 }
 
-/******************************************* 
+@layer base {
+  input, textarea, select {
+    @apply p-2.5 mt-1 block w-full border sm:text-sm border-gray-300 bg-white rounded-md shadow-sm focus:outline-1 focus:border-greyFriends focus:outline focus:outline-greyFriends invalid:[&:not(:focus)]:border-red-700 invalid:[&:not(:focus)]:outline-red-700;
+  }
+}
+
+/*******************************************
   Rich Text Styles
 *******************************************/
 
@@ -124,7 +130,7 @@ body {
   @apply bg-yellow-100 border-yellow-500 text-yellow-700 px-4 py-2 rounded-lg mb-4;
 }
 
-/******************************************* 
+/*******************************************
   React Slideshow Styles
 *******************************************/
 
