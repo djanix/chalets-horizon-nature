@@ -4,6 +4,7 @@ import RichText from '@/app/[lang]/components/RichText';
 import { useReservationStore } from '@/app/store/reservation';
 import { useState, FormEvent } from 'react';
 import { getStrapiURL } from '@/app/[lang]/utils/api-helpers';
+import GlobalConfig from '@/app/app.config';
 
 interface ReservationProps {
   data: {
@@ -73,6 +74,8 @@ export default function Reservation({ data }: ReservationProps) {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    if (!GlobalConfig.reservation.enabled) return;
+
     const isValid = formValidation();
     if (!isValid) return;
 
@@ -99,8 +102,12 @@ export default function Reservation({ data }: ReservationProps) {
   return (
     <section>
       <div className="container flex flex-col justify-center mx-auto lg:flex-row lg:justify-between px-6">
-        <div className="flex flex-col justify-center pb-6 text-center rounded-lg lg:max-w-md xl:max-w-lg lg:text-left">
-          {/*<h3 className="text-xl font-bold">Réservation à venir.</h3>*/}
+        <div className="flex flex-col justify-center pb-6 text-center rounded-lg lg:max-w-md xl:max-w-lg lg:text-left relative">
+          {!GlobalConfig.reservation.enabled && (
+            <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-natural-light/70">
+              <h3 className="text-3xl rotate-45 font-bold">Réservation à venir.</h3>
+            </div>
+          )}
 
           <form className="space-y-6 group" onSubmit={handleSubmit}>
             <h3 className="text-xl font-bold">Dates</h3>
