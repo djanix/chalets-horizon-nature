@@ -1,6 +1,6 @@
 const GlobalConfig = {
   reservation: {
-    enabled: true,
+    enabled: false,
   },
 };
 

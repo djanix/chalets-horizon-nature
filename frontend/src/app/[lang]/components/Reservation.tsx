@@ -105,7 +105,7 @@ export default function Reservation({ data }: ReservationProps) {
         <div className="flex flex-col justify-center pb-6 text-center rounded-lg lg:max-w-md xl:max-w-lg lg:text-left relative">
           {!GlobalConfig.reservation.enabled && (
             <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-natural-light/70">
-              <h3 className="text-3xl rotate-45 font-bold">Réservation à venir.</h3>
+              <h3 className="text-3xl rotate-45 font-bold text-natural">Réservation à venir.</h3>
             </div>
           )}
 
