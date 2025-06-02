@@ -15,7 +15,17 @@ function getLocale(request: NextRequest): string | undefined {
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
   // @ts-expect-error locales are readonly
   const locales: string[] = i18n.locales;
-  return matchLocale(languages, locales, i18n.defaultLocale);
+
+  let locale = '';
+
+  try {
+    locale = matchLocale(languages, locales, i18n.defaultLocale);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (error) {
+    locale = i18n.defaultLocale;
+  }
+
+  return locale;
 }
 
 export function middleware(request: NextRequest) {
